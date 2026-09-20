@@ -464,6 +464,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .hero__title em,
 .section__title em {
     font-style: normal;
+    /* Le soulignement suit chaque fragment de ligne séparément, au lieu de
+       tirer un seul trait sur toute la boîte quand le texte passe à la ligne. */
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
     background-image: linear-gradient(var(--gold), var(--gold));
     background-repeat: no-repeat;
     background-position: 0 92%;

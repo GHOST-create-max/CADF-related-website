@@ -436,7 +436,7 @@ function buildContact() {
     const body = `        <main id="main">
 ${hero({
         eyebrow: 'Contact',
-        title: 'Parlons de <em>votre projet</em> scolaire',
+        title: 'Parlons de <em>votre\u00A0projet</em> scolaire',
         lead: "Admission, vie scolaire, programmes : écrivez-nous et nous vous répondons sous 24 heures ouvrées. Le secrétariat reçoit également sans rendez-vous le mercredi matin.",
         actions: [
             { href: '#formulaire', label: 'Écrire au collège', primary: true },
