@@ -1,8 +1,8 @@
-// Vérifie que le code partagé (common.js) se comporte pareil sur les 4 pages :
-// loader, thème persistant, menu mobile, lien de navigation actif.
+// Vérifie que le code partagé (main.js) se comporte pareil sur les 5 pages :
+// navigation active, tiroir mobile, animation d'entrée, aucune erreur JS.
 const { launch, BASE_URL } = require('./browser');
 
-const PAGES = ['index.html', 'about.html', 'gallery.html', 'contact.html'];
+const PAGES = ['index.html', 'about.html', 'gallery.html', 'contact.html', 'dashboard.html'];
 let failures = 0;
 
 function report(label, ok, detail) {
@@ -20,62 +20,61 @@ function report(label, ok, detail) {
     const errors = [];
     p.on('pageerror', (e) => errors.push(e.message));
     await p.goto(`${BASE_URL}/${page}`, { waitUntil: 'load' });
-    await p.waitForTimeout(1800);
+    await p.waitForTimeout(2600);
 
-    // 1. Le loader existe et a bien disparu.
-    const loader = await p.evaluate(() => {
-      const l = document.getElementById('loader');
-      if (!l) return null;
-      const cs = getComputedStyle(l);
-      return { hidden: cs.opacity === '0' || cs.visibility === 'hidden' };
+    // 1. Le repli « sans JavaScript » est levé dès que main.js s'exécute.
+    const jsReady = await p.evaluate(() =>
+      !document.documentElement.classList.contains('no-js'));
+    report('classe no-js retirée', jsReady);
+
+    // 2. La page courante est signalée dans le rail ET dans la barre basse.
+    const active = await p.evaluate(() => ({
+      side: document.querySelector('.sidenav__link[aria-current="page"]')?.getAttribute('href'),
+      tab: document.querySelector('.tabbar__link[aria-current="page"]')?.getAttribute('href'),
+      pill: !!document.querySelector('.sidenav__link[aria-current="page"] .dot'),
+    }));
+    report('lien de navigation actif correct',
+      active.side === page && active.tab === page,
+      `rail: ${active.side}, barre: ${active.tab}`);
+    report('pastille or sur l\'élément actif', active.pill);
+
+    // 3. L'animation d'entrée laisse le contenu visible à la fin.
+    const visible = await p.evaluate(() =>
+      [...document.querySelectorAll('[data-anim]')]
+        .every((el) => parseFloat(getComputedStyle(el).opacity) > .95));
+    report('contenu animé bien révélé', visible);
+
+    // 4. Le contenu principal est cliquable (aucun calque résiduel).
+    const clickable = await p.evaluate(() => {
+      const el = document.elementFromPoint(720, 400);
+      return !!el && !el.closest('.lightbox, .nav-scrim');
     });
-    report('loader présent puis masqué', loader && loader.hidden,
-      loader ? '' : 'aucun #loader sur la page');
-
-    // 2. Le contenu est cliquable (le calque ne bloque plus rien).
-    const clickable = await p.evaluate(() =>
-      !document.elementFromPoint(720, 300)?.closest('#loader'));
     report('contenu interactif', clickable);
 
-    // 3. Thème : bascule + persistance après rechargement.
-    const before = await p.evaluate(() => document.documentElement.classList.contains('dark'));
-    await p.click('#theme-btn');
-    await p.waitForTimeout(400);
-    const after = await p.evaluate(() => document.documentElement.classList.contains('dark'));
-    report('bascule du thème', before !== after, `${before} -> ${after}`);
-
-    await p.reload({ waitUntil: 'load' });
-    await p.waitForTimeout(1200);
-    const persisted = await p.evaluate(() => document.documentElement.classList.contains('dark'));
-    report('thème conservé au rechargement', persisted === after, `${persisted}`);
-
-    // 4. Lien de navigation actif = page courante.
-    // Le rail (desktop) et le menu mobile doivent tous deux marquer la page.
-    const active = await p.evaluate(() => {
-      const rail = document.querySelector('.rail__link.active');
-      const mob = document.querySelector('.mobile-nav-link.active');
-      return {
-        rail: rail ? rail.getAttribute('href') : null,
-        mobile: mob ? mob.getAttribute('href') : null,
-        current: rail ? rail.getAttribute('aria-current') : null,
-      };
-    });
-    report('lien de nav. actif correct',
-      active.rail === page && active.mobile === page && active.current === 'page',
-      `rail: ${active.rail}, mobile: ${active.mobile}`);
-
-    // 5. Menu mobile.
+    // 5. Tiroir mobile : ouverture, fermeture avec Échap.
     await p.setViewportSize({ width: 390, height: 844 });
     await p.waitForTimeout(400);
-    await p.click('#hamburger');
-    await p.waitForTimeout(700);
-    const opened = await p.evaluate(() =>
-      document.getElementById('mobileMenu').classList.contains('active'));
+    await p.click('#navToggle');
+    await p.waitForTimeout(600);
+    const opened = await p.evaluate(() => ({
+      open: document.getElementById('navDrawer').classList.contains('is-open'),
+      expanded: document.getElementById('navToggle').getAttribute('aria-expanded'),
+    }));
     await p.keyboard.press('Escape');
     await p.waitForTimeout(600);
     const closed = await p.evaluate(() =>
-      !document.getElementById('mobileMenu').classList.contains('active'));
-    report('menu mobile ouvre/ferme (Échap)', opened && closed);
+      !document.getElementById('navDrawer').classList.contains('is-open'));
+    report('tiroir mobile ouvre/ferme (Échap)',
+      opened.open && opened.expanded === 'true' && closed);
+
+    // 6. La barre basse remplace le rail sous 1024px.
+    const mobileNav = await p.evaluate(() => ({
+      rail: getComputedStyle(document.querySelector('.sidenav')).display,
+      tabs: getComputedStyle(document.querySelector('.tabbar')).display,
+    }));
+    report('rail masqué / barre basse affichée en mobile',
+      mobileNav.rail === 'none' && mobileNav.tabs !== 'none',
+      `rail:${mobileNav.rail} barre:${mobileNav.tabs}`);
 
     report('aucune erreur JS', errors.length === 0, errors.join(' | '));
     await ctx.close();

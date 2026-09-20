@@ -1,205 +1,293 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À Propos — Collège Alexandre Dumas Fils</title>
-    <meta name="description" content="L'histoire, la mission et les valeurs du Collège Alexandre Dumas Fils, établissement d'excellence au Cap-Haïtien depuis plus de 25 ans.">
-    <link rel="icon" href="images/Dumas_logo.jpg" type="image/jpg">
-    <link rel="stylesheet" href="styles.css">
-    <script>
-        // Applique le thème avant le premier rendu pour éviter un flash clair.
-        (function () {
-            try {
-                var saved = localStorage.getItem('theme');
-                var dark = saved ? saved === 'dark'
-                    : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (dark) document.documentElement.classList.add('dark');
-            } catch (e) {}
-        })();
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>À propos — Collège Alexandre Dumas Fils</title>
+    <meta name="description" content="L'histoire, la mission, les valeurs et l'équipe dirigeante du Collège Alexandre Dumas Fils, au Cap-Haïtien depuis 1999.">
+    <meta name="cadf-contact-endpoint" content="">
+    <link rel="icon" href="assets/img/Dumas_logo.webp" type="image/webp">
+    <link rel="preload" href="assets/fonts/jakarta.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div class="loader-container" id="loader" role="status" aria-live="polite" aria-label="Chargement de la page">
-        <div class="spinner"></div>
-    </div>
-    <a class="skip-link" href="#main">Aller au contenu</a>
-    <div class="mobile-overlay" id="mobileOverlay"></div>
-    <nav class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
-        <div class="mobile-menu__head">
-            <span class="topbar__brand"><span class="topbar__mark">CADF</span></span>
-            <button type="button" class="icon-btn" id="mobileClose"><span class="sr-only">Fermer</span>&times;</button>
+    <a class="skip-link" href="#main">Aller au contenu principal</a>
+    <nav class="sidenav" aria-label="Navigation principale">
+        <a class="brand" href="index.html">
+            <span class="brand__mark" aria-hidden="true">CADF</span>
+            <span class="brand__text">Alexandre Dumas Fils<small>Cap-Haïtien</small></span>
+        </a>
+        <ul class="sidenav__list">
+            <li><a class="sidenav__link" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9"/><path d="M9 21v-7h6v7"/></svg><span>Accueil</span></a></li>
+            <li><a class="sidenav__link" href="about.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg><span>À propos</span><span class="dot" aria-hidden="true"></span></a></li>
+            <li><a class="sidenav__link" href="gallery.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Galerie</span></a></li>
+            <li><a class="sidenav__link" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.7 6.1a2 2 0 0 0 2.6 0L22 7"/></svg><span>Contact</span></a></li>
+            <li><a class="sidenav__link" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Espace élève</span></a></li>
+        </ul>
+        <div class="sidenav__foot">
+            <a class="sidenav__cta" href="contact.html">Demander une admission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <p class="sidenav__meta">15, Rue Alexandre Dumas<br>Cap-Haïtien, Haïti</p>
         </div>
-        <a href="index.html" class="mobile-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.2 12 3l9 7.2"/><path d="M5 9.6V21h14V9.6"/></svg> Accueil</a>
-        <a href="about.html" class="mobile-nav-link active" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a2 2 0 0 1 2 2v14a1.6 1.6 0 0 0-1.6-1.6H4z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H14a2 2 0 0 0-2 2v14a1.6 1.6 0 0 1 1.6-1.6H20z"/></svg> À Propos</a>
-        <a href="gallery.html" class="mobile-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.6" cy="9.4" r="1.6"/><path d="m4 17 4.5-4.2a2 2 0 0 1 2.7 0L20 20"/></svg> Galerie</a>
-        <a href="contact.html" class="mobile-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 7 7.4 5.2a2 2 0 0 0 2.2 0L20.5 7"/></svg> Contacts</a>
-        <a href="contact.html" class="btn btn--primary btn--block" style="margin-top:18px">Nous rejoindre <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </nav>
+    <header class="topbar">
+        <a class="brand brand--bare" href="index.html">
+            <span class="brand__mark" aria-hidden="true">CADF</span>
+            <span class="brand__text">Alexandre Dumas Fils<small>Cap-Haïtien</small></span>
+        </a>
+        <button type="button" class="btn btn--ghost btn--icon" id="navToggle" aria-expanded="false" aria-controls="navDrawer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="sr-only">Ouvrir le menu</span>
+        </button>
+    </header>
+
+    <div class="nav-scrim" id="navScrim"></div>
+    <div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Menu">
+        <div class="nav-drawer__head">
+            <span class="brand__text">Menu</span>
+            <button type="button" class="btn btn--ghost btn--icon" id="navClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">Fermer</span></button>
+        </div>
+        <a class="nav-drawer__link" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9"/><path d="M9 21v-7h6v7"/></svg><span>Accueil</span></a>
+        <a class="nav-drawer__link" href="about.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg><span>À propos</span></a>
+        <a class="nav-drawer__link" href="gallery.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Galerie</span></a>
+        <a class="nav-drawer__link" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.7 6.1a2 2 0 0 0 2.6 0L22 7"/></svg><span>Contact</span></a>
+        <a class="nav-drawer__link" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Espace élève</span></a>
+    </div>
+    <nav class="tabbar" aria-label="Navigation">
+        <ul class="tabbar__list">
+            <li><a class="tabbar__link" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9"/><path d="M9 21v-7h6v7"/></svg><span>Accueil</span></a></li>
+            <li><a class="tabbar__link" href="about.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg><span>À propos</span><span class="dot" aria-hidden="true"></span></a></li>
+            <li><a class="tabbar__link" href="gallery.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Galerie</span></a></li>
+            <li><a class="tabbar__link" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.7 6.1a2 2 0 0 0 2.6 0L22 7"/></svg><span>Contact</span></a></li>
+            <li><a class="tabbar__link" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Élève</span></a></li>
+        </ul>
     </nav>
 
-    <div class="app">
-        <nav class="rail" aria-label="Navigation principale">
-            <a href="index.html" class="rail__logo" aria-label="Accueil — Collège Alexandre Dumas Fils">CADF</a>
-            <ul class="rail__nav">
-                <li><a href="index.html" class="rail__link" data-label="Accueil"><span class="sr-only">Accueil</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.2 12 3l9 7.2"/><path d="M5 9.6V21h14V9.6"/></svg></a></li>
-                <li><a href="about.html" class="rail__link active" data-label="À Propos" aria-current="page"><span class="sr-only">À Propos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a2 2 0 0 1 2 2v14a1.6 1.6 0 0 0-1.6-1.6H4z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H14a2 2 0 0 0-2 2v14a1.6 1.6 0 0 1 1.6-1.6H20z"/></svg></a></li>
-                <li><a href="gallery.html" class="rail__link" data-label="Galerie"><span class="sr-only">Galerie</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.6" cy="9.4" r="1.6"/><path d="m4 17 4.5-4.2a2 2 0 0 1 2.7 0L20 20"/></svg></a></li>
-                <li><a href="contact.html" class="rail__link" data-label="Contacts"><span class="sr-only">Contacts</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 7 7.4 5.2a2 2 0 0 0 2.2 0L20.5 7"/></svg></a></li>
-            </ul>
-            <div class="rail__spacer"></div>
-            <button type="button" class="rail__link" id="theme-btn" data-label="Thème">
-                <span class="sr-only">Changer de thème</span><svg id="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 1.6v2.6M12 19.8v2.6M4.2 4.2l1.9 1.9M17.9 17.9l1.9 1.9M1.6 12h2.6M19.8 12h2.6M4.2 19.8l1.9-1.9M17.9 6.1l1.9-1.9"/></svg><svg id="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.6 8.6 0 1 0 10.7 10.7"/></svg>
-            </button>
-            <img class="rail__avatar" src="images/Dumas_logo.jpg" alt="" width="42" height="42">
-        </nav>
+    <div class="shell">
+        <main id="main">
+        <section class="hero-band">
+          <div class="wrap hero">
+            <div class="hero__text">
+                <p class="eyebrow" data-anim="title">À propos</p>
+                <h1 class="hero__title" data-anim="title">Notre histoire et notre <em>mission</em></h1>
+                <p class="hero__lead" data-anim="lead">Fondé en 1999 au cœur du Cap-Haïtien, le collège porte le nom du célèbre écrivain français et s'inspire des valeurs d'excellence littéraire et d'engagement social qui caractérisaient son œuvre.</p>
+                <div class="hero__actions" data-anim="actions">
+                    <a class="btn btn--primary" href="contact.html">Rencontrer l’équipe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    <a class="btn btn--ghost" href="gallery.html">Voir la galerie</a>
+                </div>
 
-        <main class="main" id="main">
-        <div class="topbar">
-            <a href="index.html" class="topbar__brand"><span class="topbar__mark">CADF</span> <span>Collège A. Dumas Fils</span></a>
-            <div style="display:flex;gap:10px">
-                <button type="button" class="icon-btn" id="theme-btn-m"><span class="sr-only">Changer de thème</span><svg id="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 1.6v2.6M12 19.8v2.6M4.2 4.2l1.9 1.9M17.9 17.9l1.9 1.9M1.6 12h2.6M19.8 12h2.6M4.2 19.8l1.9-1.9M17.9 6.1l1.9-1.9"/></svg><svg id="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.6 8.6 0 1 0 10.7 10.7"/></svg></button>
-                <button type="button" class="icon-btn hamburger" id="hamburger"><span class="sr-only">Menu</span><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
             </div>
-        </div>
+            <figure class="hero__figure" data-anim="figure">
+                <div class="hero__img"><img src="assets/img/Dumas.webp" alt="Portrait d'Alexandre Dumas fils, écrivain dont le collège porte le nom." width="640" height="640" loading="eager" fetchpriority="high" decoding="async"></div>
+                <figcaption class="hero__badge" data-anim="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 1.9"/></svg><span><strong>Depuis 1999</strong>25 années au service du Nord</span></figcaption>
+            </figure>
+          </div>
+        </section>
 
-            <header class="page-head">
-                <h1 class="page-title">Notre histoire et notre mission</h1>
-                <p class="page-lead">Découvrez le Collège Alexandre Dumas Fils, un établissement d'excellence qui forme les leaders de demain depuis plus de 25 ans au Cap-Haïtien.</p>
-            </header>
+            <section class="section">
+                <div class="wrap">
+                <div class="section__head">
+                    <h2 class="section__title">Un projet, trois convictions</h2>
+                    <p class="section__lead">Ce qui a guidé la création du collège, et ce qui continue de l'orienter aujourd'hui.</p>
+                </div>
+                    <div class="zig-list">
+            <article class="zig">
+                <div class="zig__text">
+                    <span class="zig__index">01</span>
+                    <h3 class="zig__title">Une institution de référence dans le Nord</h3>
+                    <p>Depuis notre création, nous nous sommes imposés comme une référence en matière d'éducation de qualité dans le Nord d'Haïti, formant des générations d'étudiants qui excellent aujourd'hui dans divers domaines professionnels.</p>
+                    <p>Notre approche pédagogique combine tradition et innovation, offrant à nos élèves les outils nécessaires pour réussir dans un monde en constante évolution.</p>
 
-            <section class="section" style="margin-top:0" aria-labelledby="mission">
-                <div class="section-head"><h2 class="section-title" id="mission">Mission et vision</h2></div>
-                <div class="card-grid">
-                    <article class="course-card course-card--mint fade-in">
-                        <div class="course-card__top"><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="4.6"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg> Mission</span></div>
-                        <h3 class="course-card__title">Former des citoyens responsables et créatifs</h3>
-                        <p class="course-card__meta" style="margin-top:12px">Capables de relever les défis du 21e siècle tout en restant enracinés dans leur culture haïtienne.</p>
-                    </article>
-                    <article class="course-card course-card--blue fade-in">
-                        <div class="course-card__top"><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2.2 12S5.6 5.6 12 5.6 21.8 12 21.8 12 18.4 18.4 12 18.4 2.2 12 2.2 12"/><circle cx="12" cy="12" r="3.1"/></svg> Vision</span></div>
-                        <h3 class="course-card__title">L'établissement de référence en Haïti</h3>
-                        <p class="course-card__meta" style="margin-top:12px">Reconnu pour la qualité de son enseignement et la réussite de ses diplômés.</p>
-                    </article>
+                </div>
+                <figure class="zig__figure">
+                    <div class="zig__img"><img src="assets/img/Diapo_1.webp" alt="Cérémonie émouvante de remise des diplômes pour nos bacheliers 2024. Un moment de fierté partagée entre élèves, familles et équipe pédagogique." width="1000" height="750" loading="lazy" decoding="async"></div>
+                </figure>
+            </article>
+            <article class="zig">
+                <div class="zig__text">
+                    <span class="zig__index">02</span>
+                    <h3 class="zig__title">Notre mission</h3>
+                    <p>Former des citoyens responsables, créatifs et engagés, capables de relever les défis du 21e siècle tout en restant enracinés dans leur culture haïtienne.</p>
+                    <p>Nous nous engageons à développer l'excellence académique, l'intégrité morale et l'esprit d'innovation chez chaque élève.</p>
+
+                </div>
+                <figure class="zig__figure">
+                    <div class="zig__img"><img src="assets/img/Diapo_6.webp" alt="Élections présidentielles scolaires : exercice démocratique formateur pour nos élèves. Campagne active et participation exemplaire." width="720" height="715" loading="lazy" decoding="async"></div>
+                </figure>
+            </article>
+            <article class="zig">
+                <div class="zig__text">
+                    <span class="zig__index">03</span>
+                    <h3 class="zig__title">Notre vision</h3>
+                    <p>Être reconnu comme l'établissement de référence en Haïti pour la qualité de notre enseignement et la réussite de nos diplômés.</p>
+                    <p>Nous aspirons à être un catalyseur de changement positif dans notre communauté et un pont vers l'excellence internationale.</p>
+
+                </div>
+                <figure class="zig__figure">
+                    <div class="zig__img"><img src="assets/img/Diapo_7.webp" alt="Spectacle vibrant de danses traditionnelles haïtiennes. Nos élèves célèbrent avec fierté leur patrimoine culturel national." width="720" height="720" loading="lazy" decoding="async"></div>
+                </figure>
+            </article>
+                    </div>
                 </div>
             </section>
 
-            <section class="section" aria-labelledby="valeurs">
-                <div class="section-head">
-                    <h2 class="section-title" id="valeurs">Nos valeurs fondamentales</h2>
-                    <p class="section-sub">Les principes qui guident notre action</p>
+            <section class="section section--alt">
+                <div class="wrap">
+                <div class="section__head">
+                    <h2 class="section__title">Nos valeurs fondamentales</h2>
+                    <p class="section__lead">Les principes qui guident notre action quotidienne et façonnent l'avenir de nos élèves.</p>
                 </div>
-                <div class="info-grid">
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7.6 4h8.8v5.4a4.4 4.4 0 0 1-8.8 0z"/><path d="M7.6 5.6H5.2a2.2 2.2 0 0 0 2.4 3.3M16.4 5.6h2.4a2.2 2.2 0 0 1-2.4 3.3"/><path d="M12 13.8v3.4M9.2 20.2h5.6M10.2 17.2h3.6"/></svg></div><h3 class="info-card__title">Excellence</h3><p class="info-card__text">Nous encourageons chaque élève à donner le meilleur de lui-même et à dépasser ses propres limites.</p></article>
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.6v14.6M7.4 20.2h9.2M4.6 8.2h14.8"/><path d="M4.6 8.2 2.3 13.2a2.5 2.5 0 0 0 4.6 0z"/><path d="M19.4 8.2 17.1 13.2a2.5 2.5 0 0 0 4.6 0z"/><circle cx="12" cy="4.2" r="1.3"/></svg></div><h3 class="info-card__title">Intégrité</h3><p class="info-card__text">Honnêteté, responsabilité et respect mutuel au sein de notre communauté éducative.</p></article>
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 17.4a6.6 6.6 0 1 1 5 0"/><path d="M9.7 17.4h4.6M10.4 20.4h3.2"/></svg></div><h3 class="info-card__title">Innovation</h3><p class="info-card__text">Adoption des meilleures pratiques pédagogiques modernes et des technologies éducatives.</p></article>
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.3s-7.8-4.6-7.8-9.7A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 7.8 3c0 5.1-7.8 9.7-7.8 9.7"/></svg></div><h3 class="info-card__title">Inclusion</h3><p class="info-card__text">Un environnement bienveillant qui valorise la diversité et offre à chacun les mêmes opportunités.</p></article>
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8.6"/><path d="M12 12.4c0-4 3-7 8-7 0 5-3.4 7-8 7"/><path d="M12 14.4c0-3.4-2.6-6-6-6 0 4 2.4 6 6 6"/></svg></div><h3 class="info-card__title">Développement durable</h3><p class="info-card__text">Former des citoyens conscients de leur responsabilité envers les générations futures.</p></article>
-                </div>
-            </section>
-
-            <section class="section" aria-labelledby="impact">
-                <div class="section-head"><h2 class="section-title" id="impact">Notre impact en chiffres</h2></div>
-                <div class="stat-grid">
-                    <div class="stat fade-in"><p class="stat__value">650+</p><p class="stat__label">Élèves actifs</p></div>
-                    <div class="stat fade-in"><p class="stat__value">88 %</p><p class="stat__label">Taux de réussite</p></div>
-                    <div class="stat fade-in"><p class="stat__value">55</p><p class="stat__label">Professeurs qualifiés</p></div>
-                    <div class="stat fade-in"><p class="stat__value">25</p><p class="stat__label">Années d'excellence</p></div>
-                    <div class="stat fade-in"><p class="stat__value">1700+</p><p class="stat__label">Diplômés</p></div>
-                </div>
-            </section>
-
-            <section class="section" aria-labelledby="equipe">
-                <div class="section-head">
-                    <h2 class="section-title" id="equipe">Notre équipe dirigeante</h2>
-                    <p class="section-sub">Des professionnels dévoués à la réussite de nos élèves</p>
-                </div>
-                <div class="team-grid">
-                    <article class="team-card fade-in">
-                        <img class="team-card__photo" src="images/Zazou.jpg" alt="Portrait de Dr. Jean Zacharie" width="84" height="84" loading="lazy">
-                        <h3 class="team-card__name">Dr. Jean Zacharie</h3>
-                        <p class="team-card__role">Directeur Général</p>
-                        <p class="team-card__text">Docteur en Sciences de l'Éducation, plus de 20 ans d'expérience. Il guide l'établissement vers l'excellence.</p>
-                    </article>
-                    <article class="team-card fade-in">
-                        <img class="team-card__photo" src="images/Wooslyne.jpg" alt="Portrait de Mlle Wooslyne Pierre" width="84" height="84" loading="lazy">
-                        <h3 class="team-card__name">Mlle Wooslyne Pierre</h3>
-                        <p class="team-card__role">Directrice Pédagogique</p>
-                        <p class="team-card__text">Responsable de l'administration générale et des relations avec les parents.</p>
-                    </article>
-                    <article class="team-card fade-in">
-                        <img class="team-card__photo" src="images/Marcelin.jpg" alt="Portrait de Mr Marcelin Jean-Baptiste" width="84" height="84" loading="lazy">
-                        <h3 class="team-card__name">Mr Marcelin Jean-Baptiste</h3>
-                        <p class="team-card__role">Censeur</p>
-                        <p class="team-card__text">Expert en psychologie pédagogique, il dirige l'établissement tout en adaptant l'accompagnement des élèves.</p>
-                    </article>
-                    <article class="team-card fade-in">
-                        <img class="team-card__photo" src="images/Jhonyco.jpg" alt="Portrait de Mr Jean Jhonnyco" width="84" height="84" loading="lazy">
-                        <h3 class="team-card__name">Mr Jean Jhonnyco</h3>
-                        <p class="team-card__role">Coordinateur Culturel</p>
-                        <p class="team-card__text">Éducateur passionné, il développe et supervise tous nos programmes artistiques et culturels.</p>
-                    </article>
-                    <article class="team-card fade-in">
-                        <img class="team-card__photo" src="images/Michelet.jpg" alt="Portrait de Mr Narcius Michelet" width="84" height="84" loading="lazy">
-                        <h3 class="team-card__name">Mr Narcius Michelet</h3>
-                        <p class="team-card__role">Surveillant Principal</p>
-                        <p class="team-card__text">Ingénieur de formation et pédagogue expérimenté, il coordonne l'enseignement des sciences.</p>
-                    </article>
+                    <div class="value-grid">
+                        <article class="card" data-hover-lift>
+                            <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.2 14.3-1.4 7 5.2-3 5.2 3-1.4-7"/></svg></span>
+                            <h3 class="card__title">Excellence</h3>
+                            <p class="card__text">Nous visons l'excellence dans tous nos programmes et activités éducatives, encourageant chaque élève à donner le meilleur de lui-même et à dépasser ses propres limites.</p>
+                        </article>
+                        <article class="card" data-hover-lift>
+                            <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5.5l-8-3-8 3V12c0 6.4 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg></span>
+                            <h3 class="card__title">Intégrité</h3>
+                            <p class="card__text">Respect des valeurs morales et éthiques dans toutes nos actions. Nous cultivons l'honnêteté, la responsabilité et le respect mutuel au sein de notre communauté éducative.</p>
+                        </article>
+                        <article class="card card--flat">
+                            <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 17.5a6.5 6.5 0 1 1 5 0"/><path d="M9.7 17.5h4.6M10.4 20.5h3.2"/></svg></span>
+                            <h3 class="card__title">Innovation</h3>
+                            <p class="card__text">Adoption des meilleures pratiques pédagogiques modernes et intégration des technologies éducatives pour préparer nos élèves aux défis de demain.</p>
+                        </article>
+                        <article class="card card--flat">
+                            <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.3S4.2 15.7 4.2 10.6A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 7.8 3c0 5.1-7.8 9.7-7.8 9.7"/></svg></span>
+                            <h3 class="card__title">Inclusion</h3>
+                            <p class="card__text">Accueil de tous les élèves dans un environnement bienveillant qui valorise la diversité et offre à chacun les mêmes opportunités de réussite.</p>
+                        </article>
+                        <article class="card card--flat">
+                            <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8.5"/><path d="M12 12.5C12 8.6 15 5.6 20 5.6c0 4.9-3.4 6.9-8 6.9"/><path d="M12 14.5c0-3.4-2.6-6-6-6 0 3.9 2.4 6 6 6"/></svg></span>
+                            <h3 class="card__title">Développement durable</h3>
+                            <p class="card__text">Engagement envers l'éducation environnementale et la formation de citoyens conscients de leur responsabilité envers les générations futures.</p>
+                        </article>
+                    </div>
                 </div>
             </section>
 
-            <section class="section" aria-labelledby="installations">
-                <div class="section-head"><h2 class="section-title" id="installations">Nos installations</h2></div>
-                <div class="info-grid">
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20.5h18M4.8 20.5V9.6L12 5.2l7.2 4.4v10.9"/><path d="M12 5.2V2.8"/><rect x="9.5" y="13.4" width="5" height="7.1" rx="1"/></svg></div><h3 class="info-card__title">Salles de classe modernes</h3><p class="info-card__text">25 salles équipées de technologies interactives, climatisées et conçues pour le confort des élèves.</p></article>
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20.6h11"/><path d="M6.4 20.6a6.6 6.6 0 0 0 9.7-8.1"/><path d="m10.6 5.3 3.2 3.2-2.5 2.5-3.2-3.2z"/><path d="m12.3 3.6 1.6 1.6M7.5 11.3l2.4 2.4"/></svg></div><h3 class="info-card__title">Laboratoires scientifiques</h3><p class="info-card__text">Physique, chimie et biologie entièrement équipés pour l'expérimentation et la recherche.</p></article>
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H19v18H5.5A1.5 1.5 0 0 1 4 19.5z"/><path d="M8 3v18"/></svg></div><h3 class="info-card__title">Bibliothèque</h3><p class="info-card__text">Plus de 10 000 ouvrages et un accès à des ressources numériques internationales.</p></article>
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.6h16v7.1a8 8 0 0 1-16 0z"/><path d="M8.7 9.5h.01M15.3 9.5h.01"/><path d="M9.1 14.1a4 4 0 0 0 5.8 0"/></svg></div><h3 class="info-card__title">Centre culturel</h3><p class="info-card__text">Auditorium de 300 places, studios de répétition et espaces dédiés aux activités artistiques.</p></article>
+            <section class="section">
+                <div class="wrap">
+                <div class="section__head">
+                    <h2 class="section__title">Notre impact en chiffres</h2>
+
+                </div>
+                    <div class="figures">
+                        <div class="figure"><strong>850</strong><span>Élèves inscrits</span></div>
+                        <div class="figure"><strong>95 %</strong><span>Taux de réussite</span></div>
+                        <div class="figure"><strong>45</strong><span>Professeurs</span></div>
+                        <div class="figure"><strong>25</strong><span>Années d'excellence</span></div>
+                        <div class="figure"><strong>1700+</strong><span>Diplômés</span></div>
+                    </div>
                 </div>
             </section>
 
-            <section class="section" aria-labelledby="faq">
-                <div class="section-head">
-                    <h2 class="section-title" id="faq">Questions fréquentes</h2>
-                    <p class="section-sub">Les réponses aux questions des parents et futurs élèves</p>
+            <section class="section section--alt">
+                <div class="wrap">
+                <div class="section__head">
+                    <h2 class="section__title">Notre équipe dirigeante</h2>
+                    <p class="section__lead">Des professionnels dévoués à la réussite de nos élèves.</p>
                 </div>
-                <details class="faq-item fade-in">
-                    <summary>Quels sont les critères d'admission ?</summary>
-                    <div class="faq-item__body">L'admission se base sur le dossier scolaire (moyenne générale d'au moins 12/20), un test d'évaluation adapté au niveau et un entretien avec l'élève et les parents.</div>
-                </details>
-                <details class="faq-item fade-in">
-                    <summary>Quels sont les horaires de cours ?</summary>
-                    <div class="faq-item__body">Les cours se déroulent du lundi au vendredi de 7h30 à 15h30, avec une pause déjeuner de 12h à 13h. Les activités culturelles et le soutien scolaire ont lieu de 15h45 à 17h.</div>
-                </details>
-                <details class="faq-item fade-in">
-                    <summary>Proposez-vous des bourses d'études ?</summary>
-                    <div class="faq-item__body">Oui, nous offrons des bourses partielles (25 % à 75 %) aux élèves méritants issus de familles à revenus modestes. Les candidatures sont examinées chaque année en juin.</div>
-                </details>
-                <details class="faq-item fade-in">
-                    <summary>Comment sont organisées les activités culturelles ?</summary>
-                    <div class="faq-item__body">Les activités sont intégrées dans l'emploi du temps. Chaque élève choisit au moins une discipline : théâtre, fanfare, danse, arts visuels ou journalisme.</div>
-                </details>
-                <details class="faq-item fade-in">
-                    <summary>Quel accompagnement pour l'orientation post-bac ?</summary>
-                    <div class="faq-item__body">Notre service d'orientation accompagne les élèves dès la Première : salons, conférences métiers et relations suivies avec les universités.</div>
-                </details>
-                <details class="faq-item fade-in">
-                    <summary>Y a-t-il un service de restauration ?</summary>
-                    <div class="faq-item__body">Oui, notre cantine propose des repas équilibrés préparés sur place avec des produits locaux frais, adaptés aux besoins des adolescents.</div>
-                </details>
+                    <div class="team-grid">
+                        <article class="person">
+                            <div class="person__photo"><img src="assets/img/Zazou.webp" alt="Portrait de Dr. Jean Zacharie, directeur général du collège." width="640" height="953" loading="lazy" decoding="async"></div>
+                            <h3 class="person__name">Dr. Jean Zacharie</h3>
+                            <p class="person__role">Directeur Général</p>
+                            <p class="person__text">Docteur en Sciences de l'Éducation avec plus de 20 ans d'expérience dans l'enseignement. Visionnaire et leader, il guide notre établissement vers l'excellence depuis 15 ans.</p>
+                            <div class="person__links">
+                                <div><a href="mailto:directeur@collegealexandredumas.edu.ht">directeur@collegealexandredumas.edu.ht</a></div>
+                                <div><a href="tel:+50929355679">+509 2935-5679</a></div>
+                            </div>
+                        </article>
+                        <article class="person">
+                            <div class="person__photo"><img src="assets/img/Jhonyco.webp" alt="Portrait de Mr Jean Jhonnyco, coordinateur des activités culturelles du collège." width="640" height="501" loading="lazy" decoding="async"></div>
+                            <h3 class="person__name">Mr Jean Jhonnyco</h3>
+                            <p class="person__role">Coordinateur des activités culturelles</p>
+                            <p class="person__text">Commentateur et éducateur passionné, il développe et supervise tous nos programmes culturels et artistiques qui enrichissent l'expérience éducative.</p>
+
+                        </article>
+                        <article class="person">
+                            <div class="person__photo"><img src="assets/img/Wooslyne.webp" alt="Portrait de Mlle Wooslyne Pierre, secrétaire générale du collège." width="640" height="795" loading="lazy" decoding="async"></div>
+                            <h3 class="person__name">Mlle Wooslyne Pierre</h3>
+                            <p class="person__role">Secrétaire générale</p>
+                            <p class="person__text">Responsable de l'administration générale et des relations avec les parents. Elle assure le bon fonctionnement quotidien de notre établissement.</p>
+                            <div class="person__links">
+                                <div><a href="mailto:pedagogie@collegealexandredumas.edu.ht">pedagogie@collegealexandredumas.edu.ht</a></div>
+                                <div><a href="tel:+50929355680">+509 2935-5680</a></div>
+                            </div>
+                        </article>
+                        <article class="person">
+                            <div class="person__photo"><img src="assets/img/Michelet.webp" alt="Portrait de Mr Narcius Michelet, surveillant principal du collège." width="640" height="636" loading="lazy" decoding="async"></div>
+                            <h3 class="person__name">Mr Narcius Michelet</h3>
+                            <p class="person__role">Surveillant principal</p>
+                            <p class="person__text">Ingénieur de formation et pédagogue expérimenté, il coordonne l'enseignement des sciences et développe nos laboratoires modernes.</p>
+
+                        </article>
+                        <article class="person">
+                            <div class="person__photo"><img src="assets/img/Marcelin.webp" alt="Portrait de Mr Marcelin Jean-Baptiste, censeur du collège." width="640" height="1039" loading="lazy" decoding="async"></div>
+                            <h3 class="person__name">Mr Marcelin Jean-Baptiste</h3>
+                            <p class="person__role">Censeur</p>
+                            <p class="person__text">Expert en psychologie pédagogique, il dirige l'établissement avec constance tout en adaptant ses méthodes quand il le faut.</p>
+                            <div class="person__links">
+                                <div><a href="mailto:secretariat@collegealexandredumas.edu.ht">secretariat@collegealexandredumas.edu.ht</a></div>
+                                <div><a href="tel:+50929355678">+509 2935-5678</a></div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
             </section>
-            <footer class="footer">
+
+            <section class="section">
+                <div class="wrap">
+                <div class="section__head">
+                    <h2 class="section__title">Nos installations</h2>
+
+                </div>
+                    <div class="value-grid">
+                        <article class="card" data-hover-lift>
+                            <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22z"/><path d="M4 17.5h16"/></svg></span>
+                            <h3 class="card__title">Salles de classe modernes</h3>
+                            <p class="card__text">Des espaces lumineux et ventilés, équipés de tableaux numériques, conçus pour des effectifs qui permettent un vrai suivi individuel.</p>
+                        </article>
+                        <article class="card" data-hover-lift>
+                            <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v6.5L4.8 18a2 2 0 0 0 1.7 3h11a2 2 0 0 0 1.7-3L14 8.5V2"/><path d="M9 2h6M7.5 15h9"/></svg></span>
+                            <h3 class="card__title">Laboratoires scientifiques</h3>
+                            <p class="card__text">Physique, chimie et sciences de la vie : le matériel permet aux élèves de mener eux-mêmes les expériences du programme.</p>
+                        </article>
+                        <article class="card card--flat">
+                            <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg></span>
+                            <h3 class="card__title">Bibliothèque</h3>
+                            <p class="card__text">Entièrement rénovée, ouverte toute la journée.</p>
+                        </article>
+                        <article class="card card--flat">
+                            <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.9 1.8-1.8 0-1.1-.9-1.8-.9-2.7 0-.9.9-1.8 1.8-1.8H17a4.5 4.5 0 0 0 4.5-4.5C21.5 6 17.2 3 12 3"/><circle cx="7.6" cy="11.4" r="1.1"/><circle cx="11" cy="7.5" r="1.1"/><circle cx="15.5" cy="8.9" r="1.1"/></svg></span>
+                            <h3 class="card__title">Centre culturel</h3>
+                            <p class="card__text">Répétitions de théâtre, de musique et de danse.</p>
+                        </article>
+                        <article class="card card--flat">
+                            <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8.5"/><path d="M12 12.5C12 8.6 15 5.6 20 5.6c0 4.9-3.4 6.9-8 6.9"/><path d="M12 14.5c0-3.4-2.6-6-6-6 0 3.9 2.4 6 6 6"/></svg></span>
+                            <h3 class="card__title">Espace vert pédagogique</h3>
+                            <p class="card__text">Jardinage écologique et sensibilisation à l'environnement.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="wrap">
                 <div class="footer__grid">
                     <div>
-                        <h3>Collège Alexandre Dumas Fils</h3>
-                        <p>Excellence académique au cœur du Cap-Haïtien depuis 25 ans.</p>
+                        <h3>Le collège</h3>
+                        <p>Excellence académique au cœur du Cap-Haïtien depuis 25 ans. Former des citoyens responsables, créatifs et engagés.</p>
                     </div>
                     <div>
                         <h3>Navigation</h3>
                         <ul>
                             <li><a href="index.html">Accueil</a></li>
-                            <li><a href="about.html">À Propos</a></li>
+                            <li><a href="about.html">À propos</a></li>
                             <li><a href="gallery.html">Galerie</a></li>
-                            <li><a href="contact.html">Contacts</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="dashboard.html">Espace élève</a></li>
                         </ul>
                     </div>
                     <div>
@@ -207,101 +295,24 @@
                         <ul>
                             <li><a href="tel:+50929355678">+509 2935-5678</a></li>
                             <li><a href="mailto:info@collegealexandredumas.edu.ht">info@collegealexandredumas.edu.ht</a></li>
-                            <li>15, Rue Alexandre Dumas, Cap-Haïtien</li>
+                            <li>15, Rue Alexandre Dumas<br>Cap-Haïtien, HT1110</li>
                         </ul>
                     </div>
                     <div>
                         <h3>Horaires</h3>
                         <ul>
-                            <li>Lundi – Vendredi : 7h00 – 17h00</li>
+                            <li>Lundi – vendredi : 7h00 – 17h00</li>
                             <li>Samedi : 8h00 – 12h00</li>
                             <li>Dimanche : fermé</li>
                         </ul>
                     </div>
                 </div>
-                <div class="footer__bottom">© 2026 Collège Alexandre Dumas Fils — Cap-Haïtien, Haïti.</div>
-            </footer>
-        </main>
-            <aside class="side" aria-label="Aperçu de l'établissement">
-                <div class="side__top">
-                    <button type="button" class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8.6a6 6 0 1 0-12 0c0 6-2 7.4-2 7.4h16s-2-1.4-2-7.4"/><path d="M13.7 20a2 2 0 0 1-3.4 0"/></svg><span class="sr-only">Notifications</span></button>
-                    <button type="button" class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.1"/><path d="M19.4 14.5a1.6 1.6 0 0 0 .33 1.78l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.6 1.6 0 0 0-1.78-.33 1.6 1.6 0 0 0-1 1.47V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 9 19.4a1.6 1.6 0 0 0-1.78.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.6 1.6 0 0 0 4.6 15a1.6 1.6 0 0 0-1.47-1H3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.6 9a1.6 1.6 0 0 0-.33-1.78l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.6 1.6 0 0 0 9 4.6h.08A1.6 1.6 0 0 0 10 3.13V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.47 1.6 1.6 0 0 0 1.78-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.6 1.6 0 0 0 19.4 9v.08a1.6 1.6 0 0 0 1.47 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.47 1z"/></svg><span class="sr-only">Réglages</span></button>
-                </div>
-
-                <div class="side-card profile">
-                    <img class="profile__photo" src="images/Zazou.jpg" alt="Portrait du directeur général" width="76" height="76">
-                    <h2 class="profile__name">Dr. Jean Zacharie</h2>
-                    <p class="profile__role">Directeur Général</p>
-                </div>
-
-                <a class="side-row" href="about.html">
-                    <span class="side-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 20v-1.8a3.6 3.6 0 0 0-3.6-3.6H6.6A3.6 3.6 0 0 0 3 18.2V20"/><circle cx="9.7" cy="7.6" r="3.6"/><path d="M21 20v-1.8a3.6 3.6 0 0 0-2.7-3.48M15.6 4.12a3.6 3.6 0 0 1 0 6.97"/></svg></span>
-                    <span class="side-row__label">850 élèves <small>45 professeurs</small></span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </a>
-
-                <div class="side-card">
-                    <div class="chart-head">
-                        <span class="chart-label">Réussite au bac</span>
-                        <span class="chart-label">2024</span>
-                    </div>
-                    <p class="chart-value"><strong>95 %</strong> <span>Excellent</span></p>
-                    <div class="chart" role="img" aria-label="Évolution du taux de réussite sur l'année : progression jusqu'à 95 %.">
-                        <div class="chart__col">
-                            <span class="chart__bar" style="height:100%"><i style="height:46%"></i></span>
-                            <span class="chart__cap">Jan</span>
-                        </div>
-                        <div class="chart__col">
-                            <span class="chart__bar" style="height:100%"><i style="height:62%"></i></span>
-                            <span class="chart__cap">Fév</span>
-                        </div>
-                        <div class="chart__col">
-                            <span class="chart__bar" style="height:100%"><i style="height:54%"></i></span>
-                            <span class="chart__cap">Mar</span>
-                        </div>
-                        <div class="chart__col">
-                            <span class="chart__bar" style="height:100%"><i style="height:78%"></i></span>
-                            <span class="chart__cap">Avr</span>
-                        </div>
-                        <div class="chart__col">
-                            <span class="chart__bar" style="height:100%"><i style="height:58%"></i></span>
-                            <span class="chart__cap">Mai</span>
-                        </div>
-                        <div class="chart__col">
-                            <span class="chart__bar" style="height:100%"><i style="height:88%"></i></span>
-                            <span class="chart__cap">Juin</span>
-                        </div>
-                        <div class="chart__col">
-                            <span class="chart__bar" style="height:100%"><i style="height:50%"></i></span>
-                            <span class="chart__cap">Juil</span>
-                        </div>
-                        <div class="chart__col chart__col--hi">
-                            <span class="chart__bar" style="height:100%"><i style="height:96%"></i></span>
-                            <span class="chart__cap">Août</span>
-                        </div>
-                    </div>
-                </div>
-
-                <h2 class="section-title" style="margin:18px 0 12px">Nos filières</h2>
-                <a class="mini mini--pink" href="about.html">
-                    <div class="mini__top"><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v6.2L4.6 18a2 2 0 0 0 1.7 3h11.4a2 2 0 0 0 1.7-3L14 9.2V3"/><path d="M9 3h6M7.4 15h9.2"/></svg> Sciences</span><span class="badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.6 2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.45 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg> 4.9</span></div>
-                    <p class="mini__title">Mathématiques et Sciences Appliquées</p>
-                    <p class="mini__meta">Laboratoires équipés</p>
-                </a>
-                <a class="mini mini--yellow" href="about.html">
-                    <div class="mini__top"><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg> Langues</span><span class="badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.6 2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.45 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg> 4.8</span></div>
-                    <p class="mini__title">Français, Anglais, Créole, Espagnol</p>
-                    <p class="mini__meta">Quatre langues enseignées</p>
-                </a>
-                <a class="mini mini--purple" href="gallery.html">
-                    <div class="mini__top"><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.6"/><circle cx="17.5" cy="16" r="2.6"/></svg> Culture</span><span class="badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.6 2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.45 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg> 5.0</span></div>
-                    <p class="mini__title">Théâtre, fanfare, danse et arts visuels</p>
-                    <p class="mini__meta">Auditorium de 300 places</p>
-                </a>
-            </aside>
+                <p class="footer__bottom">© 2026 Collège Alexandre Dumas Fils — Cap-Haïtien, Haïti.</p>
+            </div>
+        </footer>
     </div>
 
-    <script src="common.js"></script>
-    <script src="about.js"></script>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

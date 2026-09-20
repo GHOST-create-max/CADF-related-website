@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { launch, BASE_URL } = require('./browser');
 
-const PAGES = ['index.html', 'about.html', 'gallery.html', 'contact.html'];
+const PAGES = ['index.html', 'about.html', 'gallery.html', 'contact.html', 'dashboard.html'];
 const OUT = path.join(__dirname, 'shots');
 
 (async () => {

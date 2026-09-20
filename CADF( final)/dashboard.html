@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Espace élève — Collège Alexandre Dumas Fils</title>
+    <meta name="description" content="Emploi du temps, bulletin, absences, annonces et messagerie : l'espace personnel des élèves du Collège Alexandre Dumas Fils.">
+    <meta name="cadf-contact-endpoint" content="">
+    <link rel="icon" href="assets/img/Dumas_logo.webp" type="image/webp">
+    <link rel="preload" href="assets/fonts/jakarta.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Aller au contenu principal</a>
+    <nav class="sidenav" aria-label="Navigation principale">
+        <a class="brand" href="index.html">
+            <span class="brand__mark" aria-hidden="true">CADF</span>
+            <span class="brand__text">Alexandre Dumas Fils<small>Cap-Haïtien</small></span>
+        </a>
+        <ul class="sidenav__list">
+            <li><a class="sidenav__link" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9"/><path d="M9 21v-7h6v7"/></svg><span>Accueil</span></a></li>
+            <li><a class="sidenav__link" href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg><span>À propos</span></a></li>
+            <li><a class="sidenav__link" href="gallery.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Galerie</span></a></li>
+            <li><a class="sidenav__link" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.7 6.1a2 2 0 0 0 2.6 0L22 7"/></svg><span>Contact</span></a></li>
+            <li><a class="sidenav__link" href="dashboard.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Espace élève</span><span class="dot" aria-hidden="true"></span></a></li>
+        </ul>
+        <div class="sidenav__foot">
+            <a class="sidenav__cta" href="contact.html">Demander une admission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <p class="sidenav__meta">15, Rue Alexandre Dumas<br>Cap-Haïtien, Haïti</p>
+        </div>
+    </nav>
+    <header class="topbar">
+        <a class="brand brand--bare" href="index.html">
+            <span class="brand__mark" aria-hidden="true">CADF</span>
+            <span class="brand__text">Alexandre Dumas Fils<small>Cap-Haïtien</small></span>
+        </a>
+        <button type="button" class="btn btn--ghost btn--icon" id="navToggle" aria-expanded="false" aria-controls="navDrawer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="sr-only">Ouvrir le menu</span>
+        </button>
+    </header>
+
+    <div class="nav-scrim" id="navScrim"></div>
+    <div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Menu">
+        <div class="nav-drawer__head">
+            <span class="brand__text">Menu</span>
+            <button type="button" class="btn btn--ghost btn--icon" id="navClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">Fermer</span></button>
+        </div>
+        <a class="nav-drawer__link" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9"/><path d="M9 21v-7h6v7"/></svg><span>Accueil</span></a>
+        <a class="nav-drawer__link" href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg><span>À propos</span></a>
+        <a class="nav-drawer__link" href="gallery.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Galerie</span></a>
+        <a class="nav-drawer__link" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.7 6.1a2 2 0 0 0 2.6 0L22 7"/></svg><span>Contact</span></a>
+        <a class="nav-drawer__link" href="dashboard.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Espace élève</span></a>
+    </div>
+    <nav class="tabbar" aria-label="Navigation">
+        <ul class="tabbar__list">
+            <li><a class="tabbar__link" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9"/><path d="M9 21v-7h6v7"/></svg><span>Accueil</span></a></li>
+            <li><a class="tabbar__link" href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg><span>À propos</span></a></li>
+            <li><a class="tabbar__link" href="gallery.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Galerie</span></a></li>
+            <li><a class="tabbar__link" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.7 6.1a2 2 0 0 0 2.6 0L22 7"/></svg><span>Contact</span></a></li>
+            <li><a class="tabbar__link" href="dashboard.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Élève</span><span class="dot" aria-hidden="true"></span></a></li>
+        </ul>
+    </nav>
+
+    <div class="shell">
+        <main id="main">
+            <section class="section section--tight" id="loginGate">
+                <div class="wrap">
+                    <div class="login">
+                        <div class="login__text">
+                            <p class="eyebrow">Espace élève</p>
+                            <h1 class="section__title">Connectez-vous à votre <em>espace</em></h1>
+                            <p class="section__lead">Emploi du temps, bulletin, absences, annonces de la direction et messagerie : tout est réuni sur un seul tableau de bord.</p>
+                            <ul class="ticks">
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Emploi du temps de la semaine</span></li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Notes et moyenne par matière</span></li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 15-6v14L3 13z"/><path d="M3 11v2a2 2 0 0 0 2 2h1v4h3v-4"/></svg><span>Annonces de la direction</span></li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m9 15 2 2 4-4"/></svg><span>Suivi des absences et retards</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="login__panel">
+                            <h2 class="card__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Connexion</h2>
+                            <form id="loginForm" class="login__form" novalidate>
+                                <div class="field">
+                                    <label for="studentId">Identifiant élève</label>
+                                    <input type="text" id="studentId" name="studentId" autocomplete="username" required>
+                                </div>
+                                <div class="field">
+                                    <label for="studentPin">Code d'accès</label>
+                                    <input type="password" id="studentPin" name="studentPin" autocomplete="current-password" required>
+                                </div>
+                                <p class="field__error" id="loginError" role="alert"></p>
+                                <button type="submit" class="btn btn--primary btn--block">Se connecter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                            </form>
+                            <p class="login__hint">Démonstration : identifiant <strong>demo</strong>, code <strong>1234</strong>. Les identifiants réels sont remis par le secrétariat.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section section--tight" id="dashboard" hidden>
+                <div class="wrap">
+                    <div class="section__head dash__head">
+                        <div>
+                            <p class="eyebrow">Espace élève — Terminale S2</p>
+                            <h2 class="section__title" id="studentName">Élève</h2>
+                        </div>
+                        <button type="button" class="btn btn--ghost" id="logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg> Se déconnecter</button>
+                    </div>
+
+                    <div class="bento">
+                        <article class="bento__cell bento__cell--wide">
+                            <h3 class="bento__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Emploi du temps — aujourd'hui</h3>
+                            <table class="timetable">
+                                <caption class="sr-only">Cours du jour, heure, matière et salle</caption>
+                                <thead>
+                                    <tr><th scope="col">Heure</th><th scope="col">Matière</th><th scope="col">Salle</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>08h00</td><td>Mathématiques</td><td>Salle 12</td></tr>
+                                    <tr><td>09h00</td><td>Français</td><td>Salle 4</td></tr>
+                                    <tr><td>10h15</td><td>Physique-chimie</td><td>Laboratoire 1</td></tr>
+                                    <tr><td>11h15</td><td>Anglais</td><td>Salle 7</td></tr>
+                                    <tr><td>13h30</td><td>Histoire-géographie</td><td>Salle 9</td></tr>
+                                    <tr><td>14h30</td><td>Éducation artistique</td><td>Atelier</td></tr>
+                                </tbody>
+                            </table>
+                        </article>
+
+                        <article class="bento__cell bento__cell--ink">
+                            <h3 class="bento__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg> Moyenne générale</h3>
+                            <p class="bento__value">15,25<span>/20</span></p>
+                            <p class="bento__hint">2e trimestre — rang 4 sur 32</p>
+                        </article>
+
+                        <article class="bento__cell">
+                            <h3 class="bento__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m9 15 2 2 4-4"/></svg> Assiduité</h3>
+                            <p class="bento__value">96<span>%</span></p>
+                            <p class="bento__hint">2 absences justifiées, 1 retard ce trimestre</p>
+                        </article>
+
+                        <article class="bento__cell bento__cell--tall">
+                            <h3 class="bento__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.2 14.3-1.4 7 5.2-3 5.2 3-1.4-7"/></svg> Bulletin — 2e trimestre</h3>
+                            <div class="grade-row">
+                                <span class="grade-row__name">Mathématiques</span>
+                                <span class="grade-row__bar"><span style="width:83%"></span></span>
+                                <span class="grade-row__val">16,5</span>
+                            </div>
+                            <div class="grade-row">
+                                <span class="grade-row__name">Français</span>
+                                <span class="grade-row__bar"><span style="width:70%"></span></span>
+                                <span class="grade-row__val">14</span>
+                            </div>
+                            <div class="grade-row">
+                                <span class="grade-row__name">Physique-chimie</span>
+                                <span class="grade-row__bar"><span style="width:78%"></span></span>
+                                <span class="grade-row__val">15,5</span>
+                            </div>
+                            <div class="grade-row">
+                                <span class="grade-row__name">Anglais</span>
+                                <span class="grade-row__bar"><span style="width:85%"></span></span>
+                                <span class="grade-row__val">17</span>
+                            </div>
+                            <div class="grade-row">
+                                <span class="grade-row__name">Histoire-géographie</span>
+                                <span class="grade-row__bar"><span style="width:68%"></span></span>
+                                <span class="grade-row__val">13,5</span>
+                            </div>
+                            <div class="grade-row">
+                                <span class="grade-row__name">Sciences de la vie</span>
+                                <span class="grade-row__bar"><span style="width:75%"></span></span>
+                                <span class="grade-row__val">15</span>
+                            </div>
+                        </article>
+
+                        <article class="bento__cell bento__cell--wide">
+                            <h3 class="bento__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 15-6v14L3 13z"/><path d="M3 11v2a2 2 0 0 0 2 2h1v4h3v-4"/></svg> Annonces de la direction</h3>
+                            <div class="notice">
+                                <p class="notice__date">18 septembre</p>
+                                <p class="notice__title">Conseil de classe du 2e trimestre</p>
+                                <p class="notice__text">Les bulletins seront remis aux familles le vendredi 26 septembre, de 14h à 17h, au secrétariat.</p>
+                            </div>
+                            <div class="notice">
+                                <p class="notice__date">12 septembre</p>
+                                <p class="notice__title">Sortie au Parc historique</p>
+                                <p class="notice__text">Sortie pédagogique prévue le 3 octobre. L'autorisation parentale est à rendre avant le 27 septembre.</p>
+                            </div>
+                            <div class="notice">
+                                <p class="notice__date">5 septembre</p>
+                                <p class="notice__title">Répétitions de la fanfare</p>
+                                <p class="notice__text">Les répétitions reprennent le mardi et le jeudi de 15h à 16h30 au centre culturel.</p>
+                            </div>
+                        </article>
+
+                        <article class="bento__cell bento__cell--full">
+                            <h3 class="bento__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.7 6.1a2 2 0 0 0 2.6 0L22 7"/></svg> Écrire à la direction</h3>
+                            <p class="bento__hint">Votre message est transmis au secrétariat, qui répond sous 24 heures ouvrées.</p>
+                            <form class="form-grid" id="messageForm" novalidate>
+                                <div class="field field--full">
+                                    <label for="dmSubject">Objet</label>
+                                    <input type="text" id="dmSubject" name="dmSubject" placeholder="Demande de rendez-vous">
+                                </div>
+                                <div class="field field--full">
+                                    <label for="dmBody">Message</label>
+                                    <textarea id="dmBody" name="dmBody" placeholder="Bonjour,"></textarea>
+                                </div>
+                                <div class="field field--full">
+                                    <p class="form-status" id="messageStatus" role="status" aria-live="polite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg><span class="form-status__text"></span></p>
+                                    <button type="submit" class="btn btn--primary">Envoyer à la direction <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                                </div>
+                            </form>
+                        </article>
+                    </div>
+
+                    <p class="bento__hint" style="margin-top:18px">Semaine du lundi 22 au vendredi 26 septembre. Les données affichées sont un jeu de démonstration.</p>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="wrap">
+                <div class="footer__grid">
+                    <div>
+                        <h3>Le collège</h3>
+                        <p>Excellence académique au cœur du Cap-Haïtien depuis 25 ans. Former des citoyens responsables, créatifs et engagés.</p>
+                    </div>
+                    <div>
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="about.html">À propos</a></li>
+                            <li><a href="gallery.html">Galerie</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="dashboard.html">Espace élève</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Contact</h3>
+                        <ul>
+                            <li><a href="tel:+50929355678">+509 2935-5678</a></li>
+                            <li><a href="mailto:info@collegealexandredumas.edu.ht">info@collegealexandredumas.edu.ht</a></li>
+                            <li>15, Rue Alexandre Dumas<br>Cap-Haïtien, HT1110</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Horaires</h3>
+                        <ul>
+                            <li>Lundi – vendredi : 7h00 – 17h00</li>
+                            <li>Samedi : 8h00 – 12h00</li>
+                            <li>Dimanche : fermé</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="footer__bottom">© 2026 Collège Alexandre Dumas Fils — Cap-Haïtien, Haïti.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

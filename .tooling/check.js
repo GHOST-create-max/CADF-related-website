@@ -2,7 +2,7 @@
 // console errors, failed requests, and basic page stats.
 const { launch, BASE_URL } = require('./browser');
 
-const PAGES = ['index.html', 'about.html', 'gallery.html', 'contact.html'];
+const PAGES = ['index.html', 'about.html', 'gallery.html', 'contact.html', 'dashboard.html'];
 
 (async () => {
   const browser = await launch();
