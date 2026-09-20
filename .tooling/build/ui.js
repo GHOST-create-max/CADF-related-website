@@ -33,6 +33,8 @@ const I = {
   lock:      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>',
   logout:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg>',
   spinner:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>',
+  sun:       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></svg>',
+  moon:      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 13.2A9 9 0 1 1 10.8 3a7 7 0 0 0 10.2 10.2"/></svg>',
   warn:      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0"/><path d="M12 9v4M12 17h.01"/></svg>',
 };
 
@@ -49,6 +51,14 @@ const NAV = [
    Laissée vide, la page bascule proprement sur un envoi par client mail. */
 const CONTACT_ENDPOINT = '';
 
+/* Bouton de bascule clair/sombre. aria-pressed est mis à jour par main.js ;
+   les deux icônes sont présentes, le CSS masque celle qui ne s'applique pas. */
+const themeToggle = (extra = '') => `<button type="button" class="theme-toggle${extra}" id="themeToggle" aria-pressed="false">
+            <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">${I.sun}</span>
+            <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">${I.moon}</span>
+            <span class="theme-toggle__label">Mode sombre</span>
+        </button>`;
+
 const head = (title, desc) => `<!DOCTYPE html>
 <html lang="fr" class="no-js">
 <head>
@@ -61,6 +71,17 @@ const head = (title, desc) => `<!DOCTYPE html>
     <link rel="preload" href="assets/fonts/jakarta.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="main.css">
+    <script>
+        /* Appliqué avant le rendu : évite que le thème clair n'apparaisse
+           un instant quand l'utilisateur a choisi le sombre. */
+        (function () {
+            try {
+                var t = localStorage.getItem('cadf.theme');
+                if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) {}
+        })();
+    </script>
 </head>`;
 
 /* Barre latérale fixe (>= 1024px). L'élément actif porte aria-current et
@@ -74,6 +95,7 @@ const sidenav = (current) => `    <nav class="sidenav" aria-label="Navigation pr
 ${NAV.map((n) => `            <li><a class="sidenav__link" href="${n.href}"${n.href === current ? ' aria-current="page"' : ''}>${I[n.icon]}<span>${n.label}</span>${n.href === current ? '<span class="dot" aria-hidden="true"></span>' : ''}</a></li>`).join('\n')}
         </ul>
         <div class="sidenav__foot">
+            ${themeToggle()}
             <a class="sidenav__cta" href="contact.html">Demander une admission ${I.arrow}</a>
             <p class="sidenav__meta">15, Rue Alexandre Dumas<br>Cap-Haïtien, Haïti</p>
         </div>
@@ -85,9 +107,12 @@ const mobileChrome = (current) => `    <header class="topbar">
             <span class="brand__mark" aria-hidden="true">CADF</span>
             <span class="brand__text">Alexandre Dumas Fils<small>Cap-Haïtien</small></span>
         </a>
+        <div class="topbar__actions">
+        ${themeToggle(' theme-toggle--compact')}
         <button type="button" class="btn btn--ghost btn--icon" id="navToggle" aria-expanded="false" aria-controls="navDrawer">
             ${I.menu}<span class="sr-only">Ouvrir le menu</span>
         </button>
+        </div>
     </header>
 
     <div class="nav-scrim" id="navScrim"></div>
@@ -146,4 +171,4 @@ const scripts = () => `    <script src="assets/vendor/gsap.min.js"></script>
 </html>
 `;
 
-module.exports = { I, NAV, CONTACT_ENDPOINT, head, sidenav, mobileChrome, tabbar, footer, scripts };
+module.exports = { I, NAV, CONTACT_ENDPOINT, themeToggle, head, sidenav, mobileChrome, tabbar, footer, scripts };

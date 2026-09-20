@@ -8,12 +8,13 @@
    Sommaire
      1. Configuration
      2. Utilitaires
-     3. Navigation
-     4. Animations GSAP (une seule orchestration au chargement)
-     5. Galerie / lightbox
-     6. Formulaire de contact (envoi réel)
-     7. Tableau de bord élève
-     8. Démarrage
+     3. Thème clair / sombre
+     4. Navigation
+     5. Animations GSAP (une seule orchestration au chargement)
+     6. Galerie / lightbox
+     7. Formulaire de contact (envoi réel)
+     8. Tableau de bord élève
+     9. Démarrage
    ========================================================================== */
 
 (function () {
@@ -54,7 +55,49 @@
         del(k) { try { localStorage.removeItem(CONFIG.storageKey + k); } catch (e) {} },
     };
 
-    /* --------------------------------------------------- 3. Navigation */
+    /* ------------------------------------------ 3. Thème clair / sombre */
+    /* Le thème est déjà appliqué par le script en ligne du <head> : ici on
+       ne fait que gérer le bouton, la persistance et le suivi du système. */
+    function initTheme() {
+        const root = document.documentElement;
+        const media = window.matchMedia
+            ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+        const current = () => root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+
+        function apply(theme, remember) {
+            root.setAttribute('data-theme', theme);
+            if (remember) store.set('theme', theme);
+
+            const dark = theme === 'dark';
+            $$('.theme-toggle').forEach((btn) => {
+                btn.setAttribute('aria-pressed', String(dark));
+                // Le libellé annonce l'action, pas l'état courant.
+                const label = dark ? 'Passer au mode clair' : 'Passer au mode sombre';
+                btn.setAttribute('title', label);
+                btn.setAttribute('aria-label', label);
+                const text = $('.theme-toggle__label', btn);
+                if (text) text.textContent = dark ? 'Mode clair' : 'Mode sombre';
+            });
+        }
+
+        apply(current(), false);
+
+        $$('.theme-toggle').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                apply(current() === 'dark' ? 'light' : 'dark', true);
+            });
+        });
+
+        /* Tant que l'utilisateur n'a rien choisi, on suit le réglage système. */
+        if (media && media.addEventListener) {
+            media.addEventListener('change', (e) => {
+                if (!store.get('theme')) apply(e.matches ? 'dark' : 'light', false);
+            });
+        }
+    }
+
+    /* --------------------------------------------------- 4. Navigation */
     function initNav() {
         const toggle = $('#navToggle');
         const drawer = $('#navDrawer');
@@ -76,7 +119,7 @@
         });
     }
 
-    /* ------------------------------------------- 4. Animations (GSAP) */
+    /* ------------------------------------------- 5. Animations (GSAP) */
     /* Une seule séquence orchestrée au chargement du hero. Aucun fade-in
        répété section par section : le reste de la page est déjà visible. */
     function initMotion() {
@@ -115,7 +158,7 @@
         });
     }
 
-    /* ------------------------------------------- 5. Galerie / lightbox */
+    /* ------------------------------------------- 6. Galerie / lightbox */
     function initGallery() {
         const box = $('#lightbox');
         const shots = $$('.shot');
@@ -185,7 +228,7 @@
         });
     }
 
-    /* ------------------------------ 6. Formulaire de contact (envoi réel) */
+    /* ------------------------------ 7. Formulaire de contact (envoi réel) */
     function initContactForm() {
         const form = $('#contactForm');
         if (!form) return;
@@ -287,7 +330,7 @@
         });
     }
 
-    /* ------------------------------------- 7. Tableau de bord élève */
+    /* ------------------------------------- 8. Tableau de bord élève */
     /* Démonstration côté client uniquement : il ne s'agit pas d'une
        authentification réelle, qui exige un serveur. */
     function initDashboard() {
@@ -387,8 +430,9 @@
         });
     }
 
-    /* ------------------------------------------------- 8. Démarrage */
+    /* ------------------------------------------------- 9. Démarrage */
     function start() {
+        initTheme();
         initNav();
         initMotion();
         initGallery();

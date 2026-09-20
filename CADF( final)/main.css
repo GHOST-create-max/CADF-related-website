@@ -63,6 +63,18 @@
     /* Texte sur fond ink */
     --on-ink:        #FAF9F6;
 
+    /* Bleu ciel — accent interactif (survol, focus, liens, page active).
+       --sky      : bleu ciel « plein », lisible EN TEXTE (>= 4.5:1)
+       --sky-tint : voiles translucides posés sur les surfaces
+       --on-sky   : texte posé sur un aplat bleu ciel */
+    --sky:           #0F6698;
+    --sky-solid:     #7FC4F7;
+    --on-sky:        #101822;
+    --sky-tint:      rgba(15, 102, 152, .08);
+    --sky-tint-soft: rgba(15, 102, 152, .05);
+    --sky-tint-strong: rgba(15, 102, 152, .14);
+    --sky-ring:      rgba(15, 102, 152, .32);
+
     /* Traits */
     --line:          #E2DCCE;
     --line-strong:   #D2CABA;
@@ -90,6 +102,48 @@
     --nav-w:         260px;
     --gutter:        clamp(20px, 4vw, 56px);
     --ease:          cubic-bezier(.22, 1, .36, 1);
+
+    color-scheme: light;
+}
+
+/* Thème sombre : mêmes rôles, valeurs inversées. Les bleus-ardoise gardent
+   la parenté avec l'ink du thème clair, plutôt qu'un gris neutre. */
+[data-theme="dark"] {
+    --surface:       #101822;
+    --surface-alt:   #16202C;
+    --surface-card:  #1C2836;
+
+    --ink:           #E8EDF2;
+    --ink-soft:      #B7C4D2;
+    --ink-muted:     #A3B1C1;
+
+    /* Sur fond sombre, l'or clair est lisible partout : une seule valeur. */
+    --gold:          #D4B04A;
+    --gold-text:     #D4B04A;
+    --gold-on-ink:   #101822;
+
+    --on-ink:        #101822;
+
+    --sky:           #7FC4F7;
+    --sky-solid:     #7FC4F7;
+    --on-sky:        #101822;
+    --sky-tint:      rgba(127, 196, 247, .12);
+    --sky-tint-soft: rgba(127, 196, 247, .07);
+    --sky-tint-strong: rgba(127, 196, 247, .20);
+    --sky-ring:      rgba(127, 196, 247, .42);
+
+    --line:          #2A3A4C;
+    --line-strong:   #3A4C60;
+
+    /* Ombres : en sombre, on assombrit au lieu de teinter. */
+    --shadow-sm:     0 1px 2px rgba(0, 0, 0, .34),
+                     0 2px 8px rgba(0, 0, 0, .26);
+    --shadow:        0 2px 4px rgba(0, 0, 0, .30),
+                     0 12px 28px rgba(0, 0, 0, .40);
+    --shadow-lg:     0 4px 8px rgba(0, 0, 0, .34),
+                     0 28px 64px rgba(0, 0, 0, .50);
+
+    color-scheme: dark;
 }
 
 /* --------------------------------------------------------------- 3. Base */
@@ -140,11 +194,12 @@ h4, h5, h6 {
 
 button, input, select, textarea { font: inherit; color: inherit; }
 
-/* Focus visible et cohérent : l'or sert ici de repère. */
+/* Focus visible et cohérent : bleu ciel + halo translucide. */
 :focus-visible {
-    outline: 3px solid var(--gold);
+    outline: 3px solid var(--sky);
     outline-offset: 3px;
     border-radius: 6px;
+    box-shadow: 0 0 0 6px var(--sky-tint);
 }
 
 .sr-only {
@@ -242,13 +297,27 @@ button, input, select, textarea { font: inherit; color: inherit; }
     transition: background .22s var(--ease), color .22s var(--ease);
 }
 .sidenav__link svg { width: 21px; height: 21px; flex: 0 0 auto; }
-.sidenav__link:hover { background: rgba(34, 49, 64, .06); color: var(--ink); }
+.sidenav__link:hover {
+    background: var(--sky-tint);
+    color: var(--sky);
+}
+.sidenav__link:hover svg { color: var(--sky); }
 
 .sidenav__link[aria-current="page"] {
     background: var(--surface);
     color: var(--ink);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--sky-ring);
 }
+/* Voile bleu ciel sur la page active, sous le libellé. */
+.sidenav__link[aria-current="page"]::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--sky-tint-soft);
+    pointer-events: none;
+}
+.sidenav__link[aria-current="page"] svg { color: var(--sky); }
 
 /* Pastille or marquant l'élément actif. */
 .sidenav__link[aria-current="page"]::before {
@@ -319,7 +388,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
     font-weight: 600;
 }
 .tabbar__link svg { width: 21px; height: 21px; }
-.tabbar__link[aria-current="page"] { color: var(--ink); }
+.tabbar__link:hover { background: var(--sky-tint); color: var(--sky); }
+.tabbar__link[aria-current="page"] {
+    background: var(--sky-tint);
+    color: var(--sky);
+}
 .tabbar__link[aria-current="page"] .dot {
     width: 5px; height: 5px;
     border-radius: 50%;
@@ -387,12 +460,61 @@ button, input, select, textarea { font: inherit; color: inherit; }
     font-weight: 600;
 }
 .nav-drawer__link svg { width: 21px; height: 21px; flex: 0 0 auto; }
-.nav-drawer__link:hover { background: var(--surface-alt); color: var(--ink); }
+.nav-drawer__link:hover { background: var(--sky-tint); color: var(--sky); }
 .nav-drawer__link[aria-current="page"] {
-    background: var(--surface-card);
-    color: var(--ink);
+    background: var(--sky-tint);
+    color: var(--sky);
     box-shadow: inset 3px 0 0 var(--gold);
 }
+
+/* Bascule clair / sombre */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 44px;
+    margin-bottom: 12px;
+    padding: .6rem .9rem;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-control);
+    background: transparent;
+    color: var(--ink-soft);
+    font: inherit;
+    font-size: .88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .25s var(--ease), color .25s var(--ease),
+                border-color .25s var(--ease);
+}
+.theme-toggle:hover {
+    background: var(--sky-tint);
+    border-color: var(--sky-ring);
+    color: var(--sky);
+}
+.theme-toggle__icon { display: flex; }
+.theme-toggle__icon svg { width: 19px; height: 19px; flex: 0 0 auto; }
+
+/* Une seule icône à la fois : le soleil en sombre (« revenir au clair »),
+   la lune en clair (« passer au sombre »). */
+.theme-toggle__icon--sun { display: none; }
+[data-theme="dark"] .theme-toggle__icon--sun { display: flex; }
+[data-theme="dark"] .theme-toggle__icon--moon { display: none; }
+/* Variante compacte : icône seule, dans la barre supérieure mobile. */
+.theme-toggle--compact {
+    width: auto;
+    min-width: 44px;
+    margin: 0;
+    padding: .5rem;
+    justify-content: center;
+}
+.theme-toggle--compact .theme-toggle__label {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.topbar__actions { display: flex; align-items: center; gap: 10px; }
 
 /* --------------------------------------------------------- 5. Mise en page */
 .shell { padding-left: var(--nav-w); }
@@ -645,7 +767,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
     border-color: var(--line-strong);
     color: var(--ink);
 }
-.btn--ghost:hover { background: var(--surface-alt); }
+.btn--ghost:hover {
+    background: var(--sky-tint);
+    border-color: var(--sky-ring);
+    color: var(--sky);
+}
 
 .btn--block { width: 100%; justify-content: center; }
 
@@ -658,8 +784,25 @@ button, input, select, textarea { font: inherit; color: inherit; }
     border: 1px solid var(--line);
     border-radius: var(--r-card);
     background: var(--surface);
+    transition: background .25s var(--ease), border-color .25s var(--ease),
+                box-shadow .25s var(--ease);
 }
 .card--flat { background: var(--surface-card); border-color: transparent; }
+
+/* Survol : voile bleu ciel translucide, jamais un aplat opaque.
+   Déclaré APRÈS .card--flat, sinon la variante plate l'emporterait
+   (même spécificité, c'est l'ordre qui tranche). */
+.card:hover,
+.card--flat:hover {
+    background: var(--sky-tint-soft);
+    border-color: var(--sky-ring);
+    box-shadow: var(--shadow-sm);
+}
+.card:hover .card__icon,
+.card--flat:hover .card__icon {
+    background: var(--sky-tint-strong);
+    color: var(--sky);
+}
 
 .card__icon {
     display: grid;
@@ -725,7 +868,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .person__text { margin-top: 9px; color: var(--ink-soft); font-size: .9rem; }
 .person__links { margin-top: 11px; font-size: .86rem; }
 .person__links a { color: var(--ink-soft); }
-.person__links a:hover { color: var(--ink); text-decoration: underline; }
+.person__links a:hover { color: var(--sky); text-decoration: underline; }
 .person__links div { padding: 1px 0; }
 
 /* Statistiques en ligne */
@@ -836,7 +979,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .contact-list a { overflow-wrap: anywhere; }
 .contact-list strong { display: block; font-size: .93rem; }
 .contact-list span, .contact-list a { display: block; color: var(--ink-soft); font-size: .9rem; }
-.contact-list a:hover { color: var(--ink); text-decoration: underline; }
+.contact-list a:hover { color: var(--sky); text-decoration: underline; }
 
 /* ------------------------------------------------ 9. Galerie + lightbox */
 .gallery {
@@ -864,6 +1007,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
     transition: transform .55s var(--ease);
 }
 .shot:hover img { transform: scale(1.05); }
+.shot:hover { box-shadow: 0 0 0 3px var(--sky-ring); }
 
 .shot__cap {
     position: absolute;
@@ -957,6 +1101,12 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .bento__cell--full { grid-column: 1 / -1; }
 .bento__cell--ink { background: var(--ink); color: var(--on-ink); border-color: transparent; }
 .bento__cell--ink .bento__label { color: rgba(250, 249, 246, .72); }
+[data-theme="dark"] .bento__cell--ink {
+    background: var(--surface-card);
+    color: var(--ink);
+    border-color: var(--sky-ring);
+}
+[data-theme="dark"] .bento__cell--ink .bento__label { color: var(--ink-muted); }
 .bento__cell--ink a { color: var(--gold-on-ink); }
 
 .bento__label {
@@ -1072,7 +1222,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .footer ul { list-style: none; margin: 0; padding: 0; }
 .footer li { margin-bottom: 7px; }
 .footer a, .footer p { color: var(--ink-soft); font-size: .91rem; }
-.footer a:hover { color: var(--ink); }
+.footer a:hover { color: var(--sky); text-decoration: underline; }
 .footer__bottom {
     margin-top: 34px;
     padding-top: 20px;

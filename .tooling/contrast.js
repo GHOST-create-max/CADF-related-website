@@ -34,6 +34,20 @@ const T = {
   goldText: '#7E6019',    // or en TEXTE sur fonds teintés
   goldOnInk: '#D4B04A',   // or sur fond ink
   cream: '#FAF9F6',
+  sky: '#0F6698',         // bleu ciel en TEXTE/bordure sur fonds clairs
+  skyInk: '#101822',      // texte sombre posé sur un aplat bleu ciel
+};
+
+// Thème sombre : mêmes rôles, valeurs inversées.
+const D = {
+  surface: '#101822',
+  surfaceAlt: '#16202C',
+  surfaceCard: '#1C2836',
+  ink: '#E8EDF2',
+  inkSoft: '#B7C4D2',
+  inkMuted: '#A3B1C1',
+  gold: '#D4B04A',
+  sky: '#7FC4F7',         // bleu ciel clair : texte et bordures sur fond sombre
 };
 
 // [libellé, premier plan, arrière-plan, seuil]
@@ -58,21 +72,53 @@ const PAIRS = [
   ['or texte sur surface-card',  T.goldText, T.surfaceCard, 4.5],
   ['or clair sur ink',           T.goldOnInk, T.ink,        4.5],
   ['crème sur ink-soft',         T.cream,    T.inkSoft,     4.5],
+  // Bleu ciel : accent interactif (survol, focus, liens, page active).
+  ['ciel texte sur surface',     T.sky,      T.surface,     4.5],
+  ['ciel texte sur surface-alt', T.sky,      T.surfaceAlt,  4.5],
+  ['ciel texte sur surface-card',T.sky,      T.surfaceCard, 4.5],
 ];
 
+// [libellé, premier plan, arrière-plan, seuil] — thème sombre
+const PAIRS_DARK = [
+  ['ink sur surface',            D.ink,      D.surface,     4.5],
+  ['ink sur surface-alt',        D.ink,      D.surfaceAlt,  4.5],
+  ['ink sur surface-card',       D.ink,      D.surfaceCard, 4.5],
+  ['ink-soft sur surface',       D.inkSoft,  D.surface,     4.5],
+  ['ink-soft sur surface-alt',   D.inkSoft,  D.surfaceAlt,  4.5],
+  ['ink-soft sur surface-card',  D.inkSoft,  D.surfaceCard, 4.5],
+  ['ink-muted sur surface',      D.inkMuted, D.surface,     4.5],
+  ['ink-muted sur surface-alt',  D.inkMuted, D.surfaceAlt,  4.5],
+  ['ink-muted sur surface-card', D.inkMuted, D.surfaceCard, 4.5],
+  ['or sur surface',             D.gold,     D.surface,     4.5],
+  ['or sur surface-alt',         D.gold,     D.surfaceAlt,  4.5],
+  ['or sur surface-card',        D.gold,     D.surfaceCard, 4.5],
+  ['ciel texte sur surface',     D.sky,      D.surface,     4.5],
+  ['ciel texte sur surface-alt', D.sky,      D.surfaceAlt,  4.5],
+  ['ciel texte sur surface-card',D.sky,      D.surfaceCard, 4.5],
+  // Bouton principal inversé : fond clair, texte sombre.
+  ['sombre sur ink (bouton)',    D.surface,  D.ink,         4.5],
+  ['sombre sur aplat ciel',      T.skyInk,   D.sky,         4.5],
+];
+
+function table(title, pairs) {
+  let fails = 0;
+  console.log(`Contraste WCAG — ${title}\n`);
+  for (const [label, fg, bg, min] of pairs) {
+    const r = ratio(fg, bg);
+    const ok = r >= min;
+    if (!ok) fails++;
+    console.log(`  ${ok ? 'OK  ' : 'FAIL'} ${label.padEnd(30)} ${r.toFixed(2)}:1  (min ${min})`);
+  }
+  return fails;
+}
+
 function run() {
-let fails = 0;
-console.log('Contraste WCAG — thème clair\n');
-for (const [label, fg, bg, min] of PAIRS) {
-  const r = ratio(fg, bg);
-  const ok = r >= min;
-  if (!ok) fails++;
-  console.log(`  ${ok ? 'OK  ' : 'FAIL'} ${label.padEnd(30)} ${r.toFixed(2)}:1  (min ${min})`);
+  let fails = table('thème clair', PAIRS);
+  console.log('');
+  fails += table('thème sombre', PAIRS_DARK);
+  console.log(`\n--- échecs : ${fails} ---`);
+  return fails;
 }
 
-console.log(`\n--- échecs : ${fails} ---`);
-return fails;
-}
-
-module.exports = { ratio, run, T };
+module.exports = { ratio, run, T, D };
 if (require.main === module) process.exit(run() ? 1 : 0);

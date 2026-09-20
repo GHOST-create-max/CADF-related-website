@@ -24,8 +24,9 @@
     "visual": "node visual.js",
     "contrast": "node contrast.js",
     "shots": "node shoot.js",
-    "test": "node contrast.js && node check.js && node shared.js && node features.js && node modal.js && node motion.js && node visual.js && node audit.js",
+    "test": "node contrast.js && node check.js && node shared.js && node theme.js && node features.js && node modal.js && node motion.js && node visual.js && node audit.js",
     "audit": "node audit.js",
-    "motion": "node motion.js"
+    "motion": "node motion.js",
+    "theme": "node theme.js"
   }
 }
