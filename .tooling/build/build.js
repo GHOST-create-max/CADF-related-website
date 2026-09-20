@@ -252,7 +252,7 @@ ${hero({
             { href: 'gallery.html', label: 'Voir la galerie' },
         ],
         image: 'Dumas',
-        alt: "Portrait d'Alexandre Dumas fils, écrivain dont le collège porte le nom.",
+        alt: "Façade du Collège Alexandre Dumas Fils, vue en contre-plongée : balcon à balustrade bleue et murs jaunes, au cœur du Cap-Haïtien.",
         badge: { icon: 'clock', title: 'Depuis 1999', text: '25 années au service du Nord' },
     })}
 
