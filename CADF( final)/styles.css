@@ -1130,7 +1130,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     gap: 24px;
 }
-.footer h4 { font-size: .94rem; margin-bottom: 10px; }
+.footer h3 { font-size: .94rem; margin-bottom: 10px; }
 .footer ul { list-style: none; margin: 0; padding: 0; }
 .footer li { margin-bottom: 6px; }
 .footer a, .footer p { color: var(--ink-2); font-size: .89rem; }

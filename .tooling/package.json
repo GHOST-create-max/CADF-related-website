@@ -18,6 +18,7 @@
     "modal": "node modal.js",
     "visual": "node visual.js",
     "shots": "node shoot.js",
-    "test": "node check.js && node shared.js && node features.js && node modal.js && node visual.js"
+    "test": "node check.js && node shared.js && node features.js && node modal.js && node visual.js && node audit.js",
+    "audit": "node audit.js"
   }
 }

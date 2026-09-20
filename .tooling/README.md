@@ -49,7 +49,7 @@ paint so dark-mode users don't get a white flash.
 
 ## Test suite
 
-    npm test     # check + shared + features + modal + visual
+    npm test     # check + shared + features + modal + visual + audit
 
 | Script | What it asserts |
 |---|---|
@@ -58,6 +58,7 @@ paint so dark-mode users don't get a white flash.
 | `features.js` | home filter chips, gallery keyboard nav (Enter / arrows / Escape / focus return), contact form validation + draft + confirmation |
 | `modal.js`    | all 12 lightbox images actually load |
 | `visual.js`   | dark-mode screenshots, no oversized SVGs, no horizontal overflow |
+| `audit.js`    | accessibility per page: one `h1`, no skipped heading levels, every control has an accessible name, every field has a label, `lang`, title/description, skip link, landmarks |
 | `shoot.js`    | desktop (1440px) + mobile (390px) screenshots into `shots/` |
 
 All of them should report **0 issues / 0 échecs**.

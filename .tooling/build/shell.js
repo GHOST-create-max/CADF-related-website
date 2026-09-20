@@ -103,17 +103,17 @@ ${NAV.map(n => `        <a href="${n.href}" class="mobile-nav-link${n.href === c
 const footer = `            <footer class="footer">
                 <div class="footer__grid">
                     <div>
-                        <h4>Collège Alexandre Dumas Fils</h4>
+                        <h3>Collège Alexandre Dumas Fils</h3>
                         <p>Excellence académique au cœur du Cap-Haïtien depuis 25 ans.</p>
                     </div>
                     <div>
-                        <h4>Navigation</h4>
+                        <h3>Navigation</h3>
                         <ul>
 ${NAV.map(n => `                            <li><a href="${n.href}">${n.label}</a></li>`).join('\n')}
                         </ul>
                     </div>
                     <div>
-                        <h4>Contact</h4>
+                        <h3>Contact</h3>
                         <ul>
                             <li><a href="tel:+50929355678">+509 2935-5678</a></li>
                             <li><a href="mailto:info@collegealexandredumas.edu.ht">info@collegealexandredumas.edu.ht</a></li>
@@ -121,7 +121,7 @@ ${NAV.map(n => `                            <li><a href="${n.href}">${n.label}</
                         </ul>
                     </div>
                     <div>
-                        <h4>Horaires</h4>
+                        <h3>Horaires</h3>
                         <ul>
                             <li>Lundi – Vendredi : 7h00 – 17h00</li>
                             <li>Samedi : 8h00 – 12h00</li>
