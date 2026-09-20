@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie — Collège Alexandre Dumas Fils</title>
+    <meta name="description" content="La vie du Collège Alexandre Dumas Fils en images : cérémonies, spectacles, sport, sciences et vie quotidienne.">
+    <link rel="icon" href="images/Dumas_logo.jpg" type="image/jpg">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Applique le thème avant le premier rendu pour éviter un flash clair.
+        (function () {
+            try {
+                var saved = localStorage.getItem('theme');
+                var dark = saved ? saved === 'dark'
+                    : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (dark) document.documentElement.classList.add('dark');
+            } catch (e) {}
+        })();
+    </script>
+</head>
+<body>
+    <div class="loader-container" id="loader" role="status" aria-live="polite" aria-label="Chargement de la page">
+        <div class="spinner"></div>
+    </div>
+    <a class="skip-link" href="#main">Aller au contenu</a>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
+        <div class="mobile-menu__head">
+            <span class="topbar__brand"><span class="topbar__mark">CADF</span></span>
+            <button type="button" class="icon-btn" id="mobileClose"><span class="sr-only">Fermer</span>&times;</button>
+        </div>
+        <a href="index.html" class="mobile-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.2 12 3l9 7.2"/><path d="M5 9.6V21h14V9.6"/></svg> Accueil</a>
+        <a href="about.html" class="mobile-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a2 2 0 0 1 2 2v14a1.6 1.6 0 0 0-1.6-1.6H4z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H14a2 2 0 0 0-2 2v14a1.6 1.6 0 0 1 1.6-1.6H20z"/></svg> À Propos</a>
+        <a href="gallery.html" class="mobile-nav-link active" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.6" cy="9.4" r="1.6"/><path d="m4 17 4.5-4.2a2 2 0 0 1 2.7 0L20 20"/></svg> Galerie</a>
+        <a href="contact.html" class="mobile-nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 7 7.4 5.2a2 2 0 0 0 2.2 0L20.5 7"/></svg> Contacts</a>
+        <a href="contact.html" class="btn btn--primary btn--block" style="margin-top:18px">Nous rejoindre <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </nav>
+
+    <div class="app app--wide">
+        <nav class="rail" aria-label="Navigation principale">
+            <a href="index.html" class="rail__logo" aria-label="Accueil — Collège Alexandre Dumas Fils">CADF</a>
+            <ul class="rail__nav">
+                <li><a href="index.html" class="rail__link" data-label="Accueil"><span class="sr-only">Accueil</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.2 12 3l9 7.2"/><path d="M5 9.6V21h14V9.6"/></svg></a></li>
+                <li><a href="about.html" class="rail__link" data-label="À Propos"><span class="sr-only">À Propos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a2 2 0 0 1 2 2v14a1.6 1.6 0 0 0-1.6-1.6H4z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H14a2 2 0 0 0-2 2v14a1.6 1.6 0 0 1 1.6-1.6H20z"/></svg></a></li>
+                <li><a href="gallery.html" class="rail__link active" data-label="Galerie" aria-current="page"><span class="sr-only">Galerie</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.6" cy="9.4" r="1.6"/><path d="m4 17 4.5-4.2a2 2 0 0 1 2.7 0L20 20"/></svg></a></li>
+                <li><a href="contact.html" class="rail__link" data-label="Contacts"><span class="sr-only">Contacts</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 7 7.4 5.2a2 2 0 0 0 2.2 0L20.5 7"/></svg></a></li>
+            </ul>
+            <div class="rail__spacer"></div>
+            <button type="button" class="rail__link" id="theme-btn" data-label="Thème">
+                <span class="sr-only">Changer de thème</span><svg id="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 1.6v2.6M12 19.8v2.6M4.2 4.2l1.9 1.9M17.9 17.9l1.9 1.9M1.6 12h2.6M19.8 12h2.6M4.2 19.8l1.9-1.9M17.9 6.1l1.9-1.9"/></svg><svg id="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.6 8.6 0 1 0 10.7 10.7"/></svg>
+            </button>
+            <img class="rail__avatar" src="images/Dumas_logo.jpg" alt="" width="42" height="42">
+        </nav>
+
+        <main class="main" id="main">
+        <div class="topbar">
+            <a href="index.html" class="topbar__brand"><span class="topbar__mark">CADF</span> <span>Collège A. Dumas Fils</span></a>
+            <div style="display:flex;gap:10px">
+                <button type="button" class="icon-btn" id="theme-btn-m"><span class="sr-only">Changer de thème</span><svg id="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 1.6v2.6M12 19.8v2.6M4.2 4.2l1.9 1.9M17.9 17.9l1.9 1.9M1.6 12h2.6M19.8 12h2.6M4.2 19.8l1.9-1.9M17.9 6.1l1.9-1.9"/></svg><svg id="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.6 8.6 0 1 0 10.7 10.7"/></svg></button>
+                <button type="button" class="icon-btn hamburger" id="hamburger"><span class="sr-only">Menu</span><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            </div>
+        </div>
+
+            <header class="page-head">
+                <h1 class="page-title">Galerie de nos moments forts</h1>
+                <p class="page-lead">Découvrez la vie vibrante du Collège Alexandre Dumas Fils à travers nos plus beaux souvenirs et événements marquants.</p>
+            </header>
+
+            <section class="section" style="margin-top:0" aria-labelledby="souvenirs">
+                <div class="section-head">
+                    <h2 class="section-title" id="souvenirs">Nos souvenirs en images</h2>
+                    <p class="section-sub">12 photos — cliquez pour agrandir</p>
+                </div>
+                <div class="gallery-grid">
+                    <button type="button" class="gallery-item fade-in" data-index="0" aria-label="Agrandir : Cérémonie émouvante de remise des diplômes pour nos bacheliers 2024. Un moment de fierté p">
+                        <img class="gallery-image" src="images/Diapo_1.jpg" alt="Cérémonie émouvante de remise des diplômes pour nos bacheliers 2024. Un moment de fierté partagée entre élèves, familles et équipe pédagogique." loading="lazy">
+                        <span class="gallery-overlay">
+                            <span class="gallery-date">15 Juin 2024</span>
+                            <span class="gallery-description">Cérémonie émouvante de remise des diplômes pour nos bacheliers 2024. Un mo…</span>
+                        </span>
+                    </button>
+                    <button type="button" class="gallery-item fade-in" data-index="1" aria-label="Agrandir : Représentation exceptionnelle de « Roméo et Juliette » par nos élèves de Première. Mise en">
+                        <img class="gallery-image" src="images/Diapo_2.jpg" alt="Représentation exceptionnelle de « Roméo et Juliette » par nos élèves de Première. Mise en scène remarquable et interprétations touchantes." loading="lazy">
+                        <span class="gallery-overlay">
+                            <span class="gallery-date">22 Mars 2024</span>
+                            <span class="gallery-description">Représentation exceptionnelle de « Roméo et Juliette » par nos élèves de P…</span>
+                        </span>
+                    </button>
+                    <button type="button" class="gallery-item fade-in" data-index="2" aria-label="Agrandir : Concert exceptionnel de notre fanfare lors du carnaval du Cap-Haïtien. Performance qui a e">
+                        <img class="gallery-image" src="images/Diapo_3.jpg" alt="Concert exceptionnel de notre fanfare lors du carnaval du Cap-Haïtien. Performance qui a enthousiasmé plus de 5000 spectateurs." loading="lazy">
+                        <span class="gallery-overlay">
+                            <span class="gallery-date">10 Février 2024</span>
+                            <span class="gallery-description">Concert exceptionnel de notre fanfare lors du carnaval du Cap-Haïtien. Per…</span>
+                        </span>
+                    </button>
+                    <button type="button" class="gallery-item fade-in" data-index="3" aria-label="Agrandir : Victoire mémorable de notre équipe de football aux championnats inter-scolaires. Travail d">
+                        <img class="gallery-image" src="images/Diapo_4.jpg" alt="Victoire mémorable de notre équipe de football aux championnats inter-scolaires. Travail d'équipe et détermination récompensés." loading="lazy">
+                        <span class="gallery-overlay">
+                            <span class="gallery-date">5 Avril 2024</span>
+                            <span class="gallery-description">Victoire mémorable de notre équipe de football aux championnats inter-scol…</span>
+                        </span>
+                    </button>
+                    <button type="button" class="gallery-item fade-in" data-index="4" aria-label="Agrandir : Grande célébration du 25e anniversaire du collège. Moment historique rassemblant anciens é">
+                        <img class="gallery-image" src="images/Diapo_5.jpg" alt="Grande célébration du 25e anniversaire du collège. Moment historique rassemblant anciens élèves, familles et personnel éducatif." loading="lazy">
+                        <span class="gallery-overlay">
+                            <span class="gallery-date">18 Janvier 2024</span>
+                            <span class="gallery-description">Grande célébration du 25e anniversaire du collège. Moment historique rasse…</span>
+                        </span>
+                    </button>
+                    <button type="button" class="gallery-item fade-in" data-index="5" aria-label="Agrandir : Élections présidentielles scolaires — exercice démocratique formateur pour nos élèves. Cam">
+                        <img class="gallery-image" src="images/Diapo_6.jpg" alt="Élections présidentielles scolaires — exercice démocratique formateur pour nos élèves. Campagne active et participation exemplaire." loading="lazy">
+                        <span class="gallery-overlay">
+                            <span class="gallery-date">12 Avril 2024</span>
+                            <span class="gallery-description">Élections présidentielles scolaires — exercice démocratique formateur pour…</span>
+                        </span>
+                    </button>
+                    <button type="button" class="gallery-item fade-in" data-index="6" aria-label="Agrandir : Spectacle vibrant de danses traditionnelles haïtiennes. Nos élèves célèbrent avec fierté l">
+                        <img class="gallery-image" src="images/Diapo_7.jpg" alt="Spectacle vibrant de danses traditionnelles haïtiennes. Nos élèves célèbrent avec fierté leur patrimoine culturel national." loading="lazy">
+                        <span class="gallery-overlay">
+                            <span class="gallery-date">28 Février 2024</span>
+                            <span class="gallery-description">Spectacle vibrant de danses traditionnelles haïtiennes. Nos élèves célèbre…</span>
+                        </span>
+                    </button>
+                    <button type="button" class="gallery-item fade-in" data-index="7" aria-label="Agrandir : Expériences fascinantes de chimie dans notre laboratoire équipé. Science pratique et décou">
+                        <img class="gallery-image" src="images/Diapo_8.jpg" alt="Expériences fascinantes de chimie dans notre laboratoire équipé. Science pratique et découvertes passionnantes pour nos élèves." loading="lazy">
+                        <span class="gallery-overlay">
+                            <span class="gallery-date">8 Mars 2024</span>
+                            <span class="gallery-description">Expériences fascinantes de chimie dans notre laboratoire équipé. Science p…</span>
+                        </span>
+                    </button>
+                    <button type="button" class="gallery-item fade-in" data-index="8" aria-label="Agrandir : Nos élèves studieux profitent de notre bibliothèque entièrement rénovée. Espace moderne pr">
+                        <img class="gallery-image" src="images/Diapo_9.jpg" alt="Nos élèves studieux profitent de notre bibliothèque entièrement rénovée. Espace moderne propice à l’étude et à la recherche." loading="lazy">
+                        <span class="gallery-overlay">
+                            <span class="gallery-date">14 Mars 2024</span>
+                            <span class="gallery-description">Nos élèves studieux profitent de notre bibliothèque entièrement rénovée. E…</span>
+                        </span>
+                    </button>
+                    <button type="button" class="gallery-item fade-in" data-index="9" aria-label="Agrandir : Déjeuner convivial à notre cantine scolaire. Menu local équilibré et moments de partage en">
+                        <img class="gallery-image" src="images/Diapo_10.jpg" alt="Déjeuner convivial à notre cantine scolaire. Menu local équilibré et moments de partage entre élèves de toutes les classes." loading="lazy">
+                        <span class="gallery-overlay">
+                            <span class="gallery-date">3 Mars 2024</span>
+                            <span class="gallery-description">Déjeuner convivial à notre cantine scolaire. Menu local équilibré et momen…</span>
+                        </span>
+                    </button>
+                    <button type="button" class="gallery-item fade-in" data-index="10" aria-label="Agrandir : Créativité à l'honneur dans notre atelier d'arts plastiques. Nos jeunes artistes développe">
+                        <img class="gallery-image" src="images/Diapo_11.jpg" alt="Créativité à l'honneur dans notre atelier d'arts plastiques. Nos jeunes artistes développent leur talent et leur expression personnelle." loading="lazy">
+                        <span class="gallery-overlay">
+                            <span class="gallery-date">25 Janvier 2024</span>
+                            <span class="gallery-description">Créativité à l'honneur dans notre atelier d'arts plastiques. Nos jeunes ar…</span>
+                        </span>
+                    </button>
+                    <button type="button" class="gallery-item fade-in" data-index="11" aria-label="Agrandir : Initiation au jardinage écologique dans notre espace vert pédagogique. Sensibilisation à l">
+                        <img class="gallery-image" src="images/Diapo_12.jpg" alt="Initiation au jardinage écologique dans notre espace vert pédagogique. Sensibilisation à l'environnement et développement durable." loading="lazy">
+                        <span class="gallery-overlay">
+                            <span class="gallery-date">20 Avril 2024</span>
+                            <span class="gallery-description">Initiation au jardinage écologique dans notre espace vert pédagogique. Sen…</span>
+                        </span>
+                    </button>
+                </div>
+            </section>
+
+    <div class="modal" id="imageModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalDescription">
+        <button type="button" class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
+        <div class="modal-content">
+            <img class="modal-image" id="modalImage" alt="">
+            <div class="modal-info">
+                <p class="modal-date" id="modalDate"></p>
+                <p class="modal-description" id="modalDescription"></p>
+            </div>
+        </div>
+    </div>
+            <footer class="footer">
+                <div class="footer__grid">
+                    <div>
+                        <h4>Collège Alexandre Dumas Fils</h4>
+                        <p>Excellence académique au cœur du Cap-Haïtien depuis 25 ans.</p>
+                    </div>
+                    <div>
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="about.html">À Propos</a></li>
+                            <li><a href="gallery.html">Galerie</a></li>
+                            <li><a href="contact.html">Contacts</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="tel:+50929355678">+509 2935-5678</a></li>
+                            <li><a href="mailto:info@collegealexandredumas.edu.ht">info@collegealexandredumas.edu.ht</a></li>
+                            <li>15, Rue Alexandre Dumas, Cap-Haïtien</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Horaires</h4>
+                        <ul>
+                            <li>Lundi – Vendredi : 7h00 – 17h00</li>
+                            <li>Samedi : 8h00 – 12h00</li>
+                            <li>Dimanche : fermé</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__bottom">© 2026 Collège Alexandre Dumas Fils — Cap-Haïtien, Haïti.</div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="gallery.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Headless-browser tooling artifacts (not part of the website)
+.cache/
+.tooling/node_modules/
+.tooling/shots/

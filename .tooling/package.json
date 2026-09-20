@@ -1,0 +1,23 @@
+{
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  },
+  "dependencies": {
+    "@sparticuz/chromium": "^153.0.0"
+  },
+  "name": "cadf-tooling",
+  "private": true,
+  "description": "Headless-browser tooling for the CADF static site (dev only)",
+  "scripts": {
+    "serve": "python3 -m http.server 8000 --bind 0.0.0.0 --directory \"../CADF( final)\"",
+    "setup": "npm install && node setup-browser.js",
+    "build": "node build/build.js",
+    "check": "node check.js",
+    "shared": "node shared.js",
+    "features": "node features.js",
+    "modal": "node modal.js",
+    "visual": "node visual.js",
+    "shots": "node shoot.js",
+    "test": "node check.js && node shared.js && node features.js && node modal.js && node visual.js"
+  }
+}
