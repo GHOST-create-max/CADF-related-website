@@ -255,17 +255,17 @@ ${homeCourses.map(courseCard).join('\n')}
                 </div>
                 <div class="info-grid">
                     <article class="info-card fade-in">
-                        <div class="info-card__icon" aria-hidden="true">🎓</div>
+                        <div class="info-card__icon" aria-hidden="true">${ICONS.cap}</div>
                         <h3 class="info-card__title">Pédagogie innovante</h3>
                         <p class="info-card__text">Notre méthode combine les meilleures pratiques traditionnelles avec les innovations technologiques modernes pour un apprentissage optimal.</p>
                     </article>
                     <article class="info-card fade-in">
-                        <div class="info-card__icon" aria-hidden="true">🎭</div>
+                        <div class="info-card__icon" aria-hidden="true">${ICONS.masks}</div>
                         <h3 class="info-card__title">Activités culturelles</h3>
                         <p class="info-card__text">Un programme riche en théâtre, musique, danse et fanfare qui développe la créativité et l'expression personnelle de nos élèves.</p>
                     </article>
                     <article class="info-card fade-in">
-                        <div class="info-card__icon" aria-hidden="true">🌱</div>
+                        <div class="info-card__icon" aria-hidden="true">${ICONS.leaf}</div>
                         <h3 class="info-card__title">Développement durable</h3>
                         <p class="info-card__text">Une éducation environnementale qui forme des citoyens conscients de leur responsabilité envers les générations futures.</p>
                     </article>
@@ -302,12 +302,12 @@ page({
                 <div class="section-head"><h2 class="section-title" id="mission">Mission et vision</h2></div>
                 <div class="card-grid">
                     <article class="course-card course-card--mint fade-in">
-                        <div class="course-card__top"><span class="tag">🎯 Mission</span></div>
+                        <div class="course-card__top"><span class="tag">${ICONS.target} Mission</span></div>
                         <h3 class="course-card__title">Former des citoyens responsables et créatifs</h3>
                         <p class="course-card__meta" style="margin-top:12px">Capables de relever les défis du 21e siècle tout en restant enracinés dans leur culture haïtienne.</p>
                     </article>
                     <article class="course-card course-card--blue fade-in">
-                        <div class="course-card__top"><span class="tag">🔭 Vision</span></div>
+                        <div class="course-card__top"><span class="tag">${ICONS.eye} Vision</span></div>
                         <h3 class="course-card__title">L'établissement de référence en Haïti</h3>
                         <p class="course-card__meta" style="margin-top:12px">Reconnu pour la qualité de son enseignement et la réussite de ses diplômés.</p>
                     </article>
@@ -320,11 +320,11 @@ page({
                     <p class="section-sub">Les principes qui guident notre action</p>
                 </div>
                 <div class="info-grid">
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">🏆</div><h3 class="info-card__title">Excellence</h3><p class="info-card__text">Nous encourageons chaque élève à donner le meilleur de lui-même et à dépasser ses propres limites.</p></article>
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">⚖️</div><h3 class="info-card__title">Intégrité</h3><p class="info-card__text">Honnêteté, responsabilité et respect mutuel au sein de notre communauté éducative.</p></article>
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">💡</div><h3 class="info-card__title">Innovation</h3><p class="info-card__text">Adoption des meilleures pratiques pédagogiques modernes et des technologies éducatives.</p></article>
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">🤝</div><h3 class="info-card__title">Inclusion</h3><p class="info-card__text">Un environnement bienveillant qui valorise la diversité et offre à chacun les mêmes opportunités.</p></article>
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">🌱</div><h3 class="info-card__title">Développement durable</h3><p class="info-card__text">Former des citoyens conscients de leur responsabilité envers les générations futures.</p></article>
+                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">${ICONS.trophy}</div><h3 class="info-card__title">Excellence</h3><p class="info-card__text">Nous encourageons chaque élève à donner le meilleur de lui-même et à dépasser ses propres limites.</p></article>
+                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">${ICONS.scales}</div><h3 class="info-card__title">Intégrité</h3><p class="info-card__text">Honnêteté, responsabilité et respect mutuel au sein de notre communauté éducative.</p></article>
+                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">${ICONS.bulb}</div><h3 class="info-card__title">Innovation</h3><p class="info-card__text">Adoption des meilleures pratiques pédagogiques modernes et des technologies éducatives.</p></article>
+                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">${ICONS.heart}</div><h3 class="info-card__title">Inclusion</h3><p class="info-card__text">Un environnement bienveillant qui valorise la diversité et offre à chacun les mêmes opportunités.</p></article>
+                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">${ICONS.leaf}</div><h3 class="info-card__title">Développement durable</h3><p class="info-card__text">Former des citoyens conscients de leur responsabilité envers les générations futures.</p></article>
                 </div>
             </section>
 
@@ -352,10 +352,10 @@ ${TEAM.map(m => teamCard(m, false)).join('\n')}
             <section class="section" aria-labelledby="installations">
                 <div class="section-head"><h2 class="section-title" id="installations">Nos installations</h2></div>
                 <div class="info-grid">
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">🏫</div><h3 class="info-card__title">Salles de classe modernes</h3><p class="info-card__text">25 salles équipées de technologies interactives, climatisées et conçues pour le confort des élèves.</p></article>
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">🔬</div><h3 class="info-card__title">Laboratoires scientifiques</h3><p class="info-card__text">Physique, chimie et biologie entièrement équipés pour l'expérimentation et la recherche.</p></article>
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">📚</div><h3 class="info-card__title">Bibliothèque</h3><p class="info-card__text">Plus de 10 000 ouvrages et un accès à des ressources numériques internationales.</p></article>
-                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">🎭</div><h3 class="info-card__title">Centre culturel</h3><p class="info-card__text">Auditorium de 300 places, studios de répétition et espaces dédiés aux activités artistiques.</p></article>
+                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">${ICONS.school}</div><h3 class="info-card__title">Salles de classe modernes</h3><p class="info-card__text">25 salles équipées de technologies interactives, climatisées et conçues pour le confort des élèves.</p></article>
+                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">${ICONS.micro}</div><h3 class="info-card__title">Laboratoires scientifiques</h3><p class="info-card__text">Physique, chimie et biologie entièrement équipés pour l'expérimentation et la recherche.</p></article>
+                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">${ICONS.book}</div><h3 class="info-card__title">Bibliothèque</h3><p class="info-card__text">Plus de 10 000 ouvrages et un accès à des ressources numériques internationales.</p></article>
+                    <article class="info-card fade-in"><div class="info-card__icon" aria-hidden="true">${ICONS.masks}</div><h3 class="info-card__title">Centre culturel</h3><p class="info-card__text">Auditorium de 300 places, studios de répétition et espaces dédiés aux activités artistiques.</p></article>
                 </div>
             </section>
 

@@ -32,6 +32,10 @@ const PAGES = ['index.html', 'about.html', 'gallery.html', 'contact.html'];
       imgs: document.images.length,
       brokenImgs: [...document.images].filter((i) => i.getAttribute('src') && i.complete && i.naturalWidth === 0).length,
       noAlt: [...document.images].filter((i) => !i.hasAttribute('alt')).length,
+      // Les emoji dépendent d'une police système : ils s'affichent en carré
+      // vide sur les machines qui n'en ont pas. On utilise des SVG à la place.
+      emoji: (document.body.innerText.match(
+        /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu) || []).length,
       links: document.querySelectorAll('a').length,
       height: document.body.scrollHeight,
       loaderVisible: (() => {
@@ -50,9 +54,10 @@ const PAGES = ['index.html', 'about.html', 'gallery.html', 'contact.html'];
     console.log(`  page height  : ${info.height}px`);
     console.log(`  loader stuck : ${info.loaderVisible}`);
     console.log(`  JS errors    : ${errors.length ? errors.join(' | ') : 'none'}`);
+    console.log(`  emoji glyphs : ${info.emoji}`);
     console.log(`  failed reqs  : ${failed.length ? failed.join(' | ') : 'none'}`);
 
-    problems += errors.length + failed.length + info.brokenImgs;
+    problems += errors.length + failed.length + info.brokenImgs + info.emoji;
     await tab.close();
   }
 
